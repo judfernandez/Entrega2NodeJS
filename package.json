@@ -15,5 +15,13 @@
     "hbs": "^4.0.3",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/judfernandezmo/Entrega2NodeJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/judfernandezmo/Entrega2NodeJS/issues"
+  },
+  "homepage": "https://github.com/judfernandezmo/Entrega2NodeJS#readme"
 }
