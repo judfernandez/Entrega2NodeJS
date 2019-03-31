@@ -7,7 +7,7 @@ hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
 hbs.registerHelper('listar', () => {
     listaEstudiantes = require('./listado.json');
     let texto = "<div class='table-responsive'> <table class='table table-hover'>\
-                <thead class='thead-dark'>\
+                <thead class='thead-dark text-center'>\
                 <th>Nombre</th>\
                 <th>Matematicas</th>\
                 <th>Ingles</th>\
@@ -17,7 +17,7 @@ hbs.registerHelper('listar', () => {
 
     listaEstudiantes.forEach(estudiantes => {
         texto = (texto +
-            "<tr class='table-info'>" +
+            "<tr class='table-info text-center'>" +
             '<td>' + estudiantes.nombre + '</td>' +
             '<td>' + estudiantes.matematicas + '</td>' +
             '<td>' + estudiantes.ingles + '</td>' +
