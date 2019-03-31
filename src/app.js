@@ -21,9 +21,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'hbs');
 
-app.get('/', (req, res) => {
+app.post('/inscrito', (req, res) => {
+    console.log();
+    res.render('inscrito', {
+        cedula: parseInt(req.query.cedula),
+        id: (req.query.id)
+    })
+});
+
+app.post('/index', (req, res) => {
     res.render('index', {
-        estudiante: 'estudiantes'
+        cedula: parseInt(req.body.cedula),
+        nombre: req.body.nombre,
+        correo: req.body.correo,
+        telefono: parseInt(req.body.telefono)
     });
 
 });
@@ -42,6 +53,12 @@ app.post('/calculos', (req, res) => {
     });
 
 });
+
+app.get('/', (req, res) => {
+    res.render('login', {
+    })
+})
+
 
 app.get('*', (req, res) => {
     res.render('error', {
