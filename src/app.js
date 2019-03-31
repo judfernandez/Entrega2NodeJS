@@ -29,6 +29,23 @@ app.post('/inscrito', (req, res) => {
     })
 });
 
+app.get('/coordinador',(req,res) =>{
+    res.render('coordinador');
+});
+
+app.post('/cursoregistrado',(req,res)=>{
+    console.log(req.body)
+    res.render('cursoregistrado',{
+        nombre_curso: req.body.nombre_curso,
+        id: (req.body.id),
+        descripcion: req.body.descripcion,
+        valor: parseInt(req.body.valor),
+        modalidad: req.body.modalidad,
+        intensidad: parseInt(req.body.intensidad),
+        estado: req.body.estado,
+    });
+});
+
 app.post('/index', (req, res) => {
     res.render('index', {
         cedula: parseInt(req.body.cedula),

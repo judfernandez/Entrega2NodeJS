@@ -5,6 +5,38 @@ hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
 
+hbs.registerHelper('registrarCurso', (id, nombre_curso, descripcion, modalidad, valor, intensidad, estado) => {
+    listaCursos = require('./cursos.json');
+    let duplicado = listaCursos.find(ver => ver.id == id);
+
+    let texto;
+    let curso;
+
+    if (!duplicado) {
+        curso = {
+            "nombre_curso": nombre_curso,
+            "id": id,
+            "descripcion": descripcion,
+            "valor": valor,
+            "modalidad": modalidad,
+            "intensidad": intensidad,
+            "estado": estado
+        };
+        listaCursos.push(curso);
+        let datos = JSON.stringify(listaCursos);
+        fs.writeFile('./src/cursos.json', datos, (err) => {
+            if (err) throw (err);
+            console.log('Curso registrado exitosamente');
+        });
+        texto = "Curso " + curso.nombre_curso + " registrado exitosamente."
+    } else {
+        texto = "El curso ya existe."
+    }
+
+    return texto;
+
+});
+
 hbs.registerHelper('inscribir', (cedula, id) => {
     let texto;
     let matricula;
@@ -92,7 +124,7 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
                 '<td>' + cursos.estado + '</td>' +
                 '</tr>');
         })
-        texto = (texto + "</tbody></table></div>");
+        texto = (texto + "</tbody></table><form action='/coordinador' method='get'><button class='btn btn-dark'>REGISTRAR O BORRAR</button></form><br></div>");
     } else {
         listaCursos = require('./cursos.json');
         texto = "<div class='table-responsive'> <table class='table table-hover'>\
@@ -122,6 +154,7 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
             }
         })
         texto = (texto + "</tbody></table></div>");
+
     }
     return texto;
 })
