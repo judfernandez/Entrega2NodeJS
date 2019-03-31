@@ -133,8 +133,7 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
                 <th>NOMBRE:</th>\
                 <th>DESCRIPCION:</th>\
                 <th>VALOR:</th>\
-                <th>MODALIDAD:</th>\
-                <th>INTENSIDAD:</th>\
+                <th>MAS INFORMACION:</th>\
                 <th>INSCRIBIRSE:</th>\
                 </thead>\
                 <tbody>";
@@ -147,8 +146,17 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
                     '<td>' + cursos.nombre_curso + '</td>' +
                     '<td>' + cursos.descripcion + '</td>' +
                     '<td>' + cursos.valor + '</td>' +
-                    '<td>' + cursos.modalidad + '</td>' +
-                    '<td>' + cursos.intensidad + '</td>' +
+                    '<td><div class="accordion" id="accordionExample"></div>' +
+                    '<div class="card">' +
+                    '<div class="card-header" id="headingOne">' +
+                    '<h5 class="mb-0">' +
+                    '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">'+
+                    "Detalles"+
+                    '</button></h5></div>'+
+                    '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">'+
+                    '<div class="card-body">'+
+                    "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
+                    '</div></div></div></div></td>'+
                     '<td><form action="/inscrito?cedula=' + usuario.cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
                     '</tr>');
             }
