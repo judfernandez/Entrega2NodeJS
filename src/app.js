@@ -55,6 +55,19 @@ app.get('/coordinador3', (req, res) => {
     res.render('coordinador3');
 })
 
+app.get('/coordinador4', (req, res) => {
+    res.render('coordinador4');
+})
+
+app.post('/actualizardatos', (req, res) => {
+    res.render('actualizardatos', {
+        cedula: parseInt(req.body.cedula),
+        nombre: req.body.nombre,
+        correo: req.body.correo,
+        telefono: parseInt(req.body.telefono)
+    });
+})
+
 app.post('/cerrado', (req, res) => {
     res.render('cerrado', {
         id: req.query.id
@@ -80,17 +93,6 @@ app.post('/index', (req, res) => {
         nombre: req.body.nombre,
         correo: req.body.correo,
         telefono: parseInt(req.body.telefono)
-    });
-
-});
-
-app.post('/calculos', (req, res) => {
-    console.log(req.query);
-    res.render('calculos', {
-        estudiante: req.body.nombre,
-        nota1: parseInt(req.body.nota1),
-        nota2: parseInt(req.body.nota2),
-        nota3: parseInt(req.body.nota3)
     });
 
 });

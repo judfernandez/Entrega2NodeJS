@@ -5,6 +5,36 @@ hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
 
+hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono) => {
+    listaUsuarios = require('./usuarios.json');
+    console.log(cedula);
+    let busqueda = listaUsuarios.find(ver => ver.cedula == cedula);
+    console.log(busqueda);
+    if (busqueda) {
+        let usuario = {
+            nombre: nombre,
+            cedula: busqueda.cedula,
+            correo: correo,
+            telefono: telefono
+        }
+
+        listaUsuarios.splice(listaUsuarios.indexOf(busqueda));
+        listaUsuarios.push(usuario);
+        console.log(listaUsuarios);
+
+        let datos = JSON.stringify(listaUsuarios);
+        fs.writeFile('./src/usuarios.json', datos, (err) => {
+            if (err) throw (err);
+            console.log('Archivo guardado con exito');
+        });
+
+        return "El usuario se modifico exitosamente"
+    } else {
+        return "El usuario que ingreso no existe en la base de datos"
+    }
+
+});
+
 hbs.registerHelper('desmatricular', (cedula, id) => {
     let texto;
     listaMatricula = require('./matricula.json');
@@ -323,8 +353,9 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
                 '</tr>');
         })
         texto = (texto + "</tbody></table><form action='/coordinador' method='get'><button class='btn btn-dark'>REGISTRAR CURSO</button></form><br>" +
-            "<form action='/coordinador2' method='get'><button class='btn btn-dark'>CERRAR CURSO</button></form><br></div>" +
-            "<form action='/coordinador3' method='get'><button class='btn btn-dark'>DESMATRICULAR ESTUDIANTE</button></form><br></div>");
+            "<form action='/coordinador2' method='get'><button class='btn btn-dark'>CERRAR CURSO</button></form><br>" +
+            "<form action='/coordinador3' method='get'><button class='btn btn-dark'>DESMATRICULAR ESTUDIANTE</button></form><br>" +
+            "<form action='/coordinador4' method='get'><button class='btn btn-dark'>MODIFICAR USUARIOS</button></form><br></div><br></div>");
     } else {
         listaCursos = require('./cursos.json');
         texto = "<div class='table-responsive'> <table class='table table-hover'>\
