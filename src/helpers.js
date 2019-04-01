@@ -156,7 +156,7 @@ hbs.registerHelper('eliminarCurso', (cedula, id) => {
                 <th>DESCRIPCION:</th>\
                 <th>VALOR:</th>\
                 <th>MAS INFORMACION:</th>\
-                <th>DARSE DE BAJA::</th>\
+                <th>DARSE DE BAJA:</th>\
                 </thead>\
                 <tbody>";
 
