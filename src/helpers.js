@@ -177,7 +177,7 @@ hbs.registerHelper('eliminarCurso', (cedula, id) => {
             '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
             '<div class="card-body">' +
             "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
-            '</div></div></div></div></td>' + '<td><form action="/aspirante?cedula=' + cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
+            '</div></div></div></div></td>' + '<td><form action="/aspirante?cedula=' + cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">DARSE DE BAJA</button></form></td>' +
             '</tr>');
     })
     texto = (texto + "</tbody></table></div>");
