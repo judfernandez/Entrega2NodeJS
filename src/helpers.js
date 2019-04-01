@@ -5,6 +5,74 @@ hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
 
+hbs.registerHelper('eliminarCurso', (cedula, id) => {
+    listaCursos = require('./cursos.json');
+    listaMatricula = require('./matricula.json');
+    let matriculado = listaMatricula.filter(ver => ver.cedula == cedula);
+    let cursosMatriculados = [];
+    let texto;
+
+    if (id) {
+        console.log('un id perron = ' + id);
+        let temporal = listaMatricula.filter(ver => ver.id != id && ver.cedula == cedula);
+        matriculado = temporal.slice();
+        console.log(matriculado);
+        listaMatricula.filter(ver => ver.cedula != cedula).forEach(iter => {
+            temporal.push(iter);
+        });
+
+        console.log(temporal);
+        let datos = JSON.stringify(temporal);
+        fs.writeFile('./src/matricula.json', datos, (err) => {
+            if(err) throw(err);
+            console.log('Archivo guardado con exito');
+        });
+    }
+    console.log(matriculado);
+
+    matriculado.forEach(szs => {
+        encontrado = listaCursos.find(cur => cur.id == szs.id);
+        cursosMatriculados.push(encontrado);
+    });
+
+    console.log(matriculado);
+    console.log(cursosMatriculados);
+
+    texto = "<div class='table-responsive'> <table class='table table-hover'>\
+                <thead class='thead-dark text-center'>\
+                <th>ID:</th>\
+                <th>NOMBRE:</th>\
+                <th>DESCRIPCION:</th>\
+                <th>VALOR:</th>\
+                <th>MAS INFORMACION:</th>\
+                <th>DARSE DE BAJA::</th>\
+                </thead>\
+                <tbody>";
+
+    cursosMatriculados.forEach(cursos => {
+        texto = (texto +
+            "<tr class='table-info text-center'>" +
+            '<td>' + cursos.id + '</td>' +
+            '<td>' + cursos.nombre_curso + '</td>' +
+            '<td>' + cursos.descripcion + '</td>' +
+            '<td>' + cursos.valor + '</td>' +
+            '<td><div class="accordion" id="accordionExample"></div>' +
+            '<div class="card">' +
+            '<div class="card-header" id="headingOne">' +
+            '<h5 class="mb-0">' +
+            '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
+            "Detalles" +
+            '</button></h5></div>' +
+            '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
+            '<div class="card-body">' +
+            "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
+            '</div></div></div></div></td>' + '<td><form action="/aspirante?cedula=' + cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
+            '</tr>');
+    })
+    texto = (texto + "</tbody></table></div>");
+    return texto
+})
+
 hbs.registerHelper('registrarCurso', (id, nombre_curso, descripcion, modalidad, valor, intensidad, estado) => {
     listaCursos = require('./cursos.json');
     let duplicado = listaCursos.find(ver => ver.id == id);
@@ -22,6 +90,15 @@ hbs.registerHelper('registrarCurso', (id, nombre_curso, descripcion, modalidad, 
             "intensidad": intensidad,
             "estado": estado
         };
+
+        if (curso.modalidad == null) {
+            curso.modalidad = 'No especificada'
+        }
+
+        if (curso.intensidad == null) {
+            curso.intensidad = 'No especificada'
+        }
+
         listaCursos.push(curso);
         let datos = JSON.stringify(listaCursos);
         fs.writeFile('./src/cursos.json', datos, (err) => {
@@ -150,18 +227,18 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
                     '<div class="card">' +
                     '<div class="card-header" id="headingOne">' +
                     '<h5 class="mb-0">' +
-                    '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">'+
-                    "Detalles"+
-                    '</button></h5></div>'+
-                    '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">'+
-                    '<div class="card-body">'+
+                    '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
+                    "Detalles" +
+                    '</button></h5></div>' +
+                    '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
+                    '<div class="card-body">' +
                     "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
-                    '</div></div></div></div></td>'+
+                    '</div></div></div></div></td>' +
                     '<td><form action="/inscrito?cedula=' + usuario.cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
                     '</tr>');
             }
         })
-        texto = (texto + "</tbody></table></div>");
+        texto = (texto + "</tbody></table><form action='/aspirante?cedula=" + usuario.cedula + "' method='post'><button class='btn btn-dark'>DARME DE BAJA EN UN CURSO</button></form><br></div>");
 
     }
     return texto;

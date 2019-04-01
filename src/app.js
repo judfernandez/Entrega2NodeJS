@@ -29,13 +29,20 @@ app.post('/inscrito', (req, res) => {
     })
 });
 
-app.get('/coordinador',(req,res) =>{
+app.post('/aspirante', (req, res) => {
+    res.render('aspirante', {
+        cedula: req.query.cedula,
+        id: req.query.id
+    });
+});
+
+app.get('/coordinador', (req, res) => {
     res.render('coordinador');
 });
 
-app.post('/cursoregistrado',(req,res)=>{
+app.post('/cursoregistrado', (req, res) => {
     console.log(req.body)
-    res.render('cursoregistrado',{
+    res.render('cursoregistrado', {
         nombre_curso: req.body.nombre_curso,
         id: (req.body.id),
         descripcion: req.body.descripcion,
@@ -56,10 +63,6 @@ app.post('/index', (req, res) => {
 
 });
 
-app.get('/listado', (req, res) => {
-    res.render('listado')
-});
-
 app.post('/calculos', (req, res) => {
     console.log(req.query);
     res.render('calculos', {
@@ -78,9 +81,7 @@ app.get('/', (req, res) => {
 
 
 app.get('*', (req, res) => {
-    res.render('error', {
-        estudiante: ' '
-    });
+    res.render('error');
 });
 
 console.log(__dirname)
