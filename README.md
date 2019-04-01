@@ -13,9 +13,9 @@ Para ejecutar:
 
 Datos:
 1. Los datos para ingresar como coordinador son los siguientes:
-    -cedula: 1152454980
-    -nombre: Admin
-    -correo: eladmin@potomail.com
-    -telefono: 5849240
+    1. cedula: 1152454980
+    2. nombre: Admin
+    3. correo: eladmin@potomail.com
+    4. telefono: 5849240
 2. Si ingresa con datos que no existian previamente en el json se creara su nuevo usuario
 3. Si ingresa con datos que existen en el json se realiza el log in
