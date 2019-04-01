@@ -36,9 +36,30 @@ app.post('/aspirante', (req, res) => {
     });
 });
 
+app.post('/desmatricular', (req, res) => {
+    res.render('desmatricular', {
+        cedula: req.body.cedula,
+        id: req.body.id
+    });
+});
+
 app.get('/coordinador', (req, res) => {
     res.render('coordinador');
 });
+
+app.get('/coordinador2', (req, res) => {
+    res.render('coordinador2');
+})
+
+app.get('/coordinador3', (req, res) => {
+    res.render('coordinador3');
+})
+
+app.post('/cerrado', (req, res) => {
+    res.render('cerrado', {
+        id: req.query.id
+    });
+})
 
 app.post('/cursoregistrado', (req, res) => {
     console.log(req.body)

@@ -1,1 +1,30 @@
-[{"cedula":"1152454980","nombre":"Admin","correo":"eladmin@potomail.com","telefono":"5849240","tipo":"coordinador"},{"cedula":123,"nombre":"Japo","correo":"as","telefono":69,"tipo":"aspirante"},{"nombre":{"name":"listar","hash":{},"data":{"root":{"settings":{"x-powered-by":true,"etag":"weak","env":"development","query parser":"extended","subdomain offset":2,"trust proxy":false,"views":"C:\\Users\\Acer\\Documents\\PraiseTheSun\\Entrega2\\Entrega2NodeJS\\views","jsonp callback name":"callback","view engine":"hbs"},"_locals":{},"cache":false}}},"tipo":"aspirante"},{"cedula":111,"nombre":"ana","correo":"as","telefono":1,"tipo":"aspirante"}]
+[
+    {
+        "cedula": 123,
+        "nombre": "Admin",
+        "correo": "eladmin@potomail.com",
+        "telefono": "5849240",
+        "tipo": "coordinador"
+    },
+    {
+        "cedula": 123,
+        "nombre": "Japo",
+        "correo": "as",
+        "telefono": 69,
+        "tipo": "aspirante"
+    },
+    {
+        "cedula": 111,
+        "nombre": "ana",
+        "correo": "as",
+        "telefono": 1,
+        "tipo": "aspirante"
+    },
+    {
+        "cedula": 1152454980,
+        "nombre": "ad",
+        "correo": "s",
+        "telefono": 1,
+        "tipo": "aspirante"
+    }
+]
