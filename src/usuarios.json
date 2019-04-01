@@ -1,17 +1,10 @@
 [
     {
-        "cedula": 123,
+        "cedula": 1152454980,
         "nombre": "Admin",
         "correo": "eladmin@potomail.com",
         "telefono": "5849240",
         "tipo": "coordinador"
-    },
-    {
-        "cedula": 123,
-        "nombre": "Japo",
-        "correo": "as",
-        "telefono": 69,
-        "tipo": "aspirante"
     },
     {
         "cedula": 111,
@@ -21,9 +14,16 @@
         "tipo": "aspirante"
     },
     {
-        "cedula": 1152454980,
-        "nombre": "ad",
+        "cedula": 123,
+        "nombre": "gordoforro",
         "correo": "s",
+        "telefono": 1,
+        "tipo": "aspirante"
+    },
+    {
+        "cedula": 211,
+        "nombre": "a",
+        "correo": "a",
         "telefono": 1,
         "tipo": "aspirante"
     }

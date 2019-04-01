@@ -16,7 +16,7 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
 
         let datos = JSON.stringify(listaMatricula);
         let matriculadosCurso = [];
-        fs.writeFile('./matricula.json', datos, (err) => {
+        fs.writeFile('./src/matricula.json', datos, (err) => {
             if (err) throw (err);
             console.log("El archivo fue guardado exitosamente");
         })
@@ -24,9 +24,11 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
         listaUsuarios = require('./usuarios.json');
         let listaCedulas = listaMatricula.filter(ver => ver.id == id);
 
-        listaCedulas.forEach(lawea => {
-            matriculadosCurso.push(listaUsuarios.find(lawea2 => lawea2.cedula = lawea.cedula));
-            console.log(lawea);
+        console.log(listaCedulas);
+
+        listaCedulas.forEach(ver => {
+            let encontrado = listaUsuarios.find(usr => usr.cedula == ver.cedula);
+            matriculadosCurso.push(encontrado);
         });
 
         console.log(matriculadosCurso);
@@ -42,7 +44,7 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
 
         matriculadosCurso.forEach(cursos => {
             let user = listaUsuarios.find(ver => ver.cedula == cursos.cedula);
-
+            console.log(user);
             texto = (texto +
                 "<tr class='table-info text-center'>" +
                 '<td>' + user.cedula + '</td>' +
@@ -291,10 +293,7 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
             "telefono": duplicado.telefono,
             "tipo": duplicado.tipo
         }
-        console.log('si existe la wea');
     }
-
-    console.log(usuario);
 
     if (usuario.tipo == 'coordinador') {
 
