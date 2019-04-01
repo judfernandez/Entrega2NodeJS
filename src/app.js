@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const dirNode_modules = path.join(__dirname, '../node_modules')
 
+
 app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
 app.use('/js', express.static(dirNode_modules + '/jquery/dist'));
 app.use('/js', express.static(dirNode_modules + '/popper.js/dist'));
@@ -110,6 +111,7 @@ app.get('*', (req, res) => {
 
 console.log(__dirname)
 
-app.listen(3000, () => {
-    console.log('Escuchando en el puerto 3000');
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log('Servidor en el puerto ' + port);
+})
