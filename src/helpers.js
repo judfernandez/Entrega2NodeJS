@@ -5,7 +5,7 @@ hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
 
-hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono) => {
+hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono, tipo) => {
     listaUsuarios = require('./usuarios.json');
     console.log(cedula);
     let busqueda = listaUsuarios.find(ver => ver.cedula == cedula);
@@ -15,7 +15,8 @@ hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono) => {
             nombre: nombre,
             cedula: busqueda.cedula,
             correo: correo,
-            telefono: telefono
+            telefono: telefono,
+            tipo: tipo
         }
 
         listaUsuarios.splice(listaUsuarios.indexOf(busqueda));

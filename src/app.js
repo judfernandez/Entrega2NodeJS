@@ -64,7 +64,8 @@ app.post('/actualizardatos', (req, res) => {
         cedula: parseInt(req.body.cedula),
         nombre: req.body.nombre,
         correo: req.body.correo,
-        telefono: parseInt(req.body.telefono)
+        telefono: parseInt(req.body.telefono),
+        tipo: req.body.tipo
     });
 })
 
