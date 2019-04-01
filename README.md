@@ -9,7 +9,8 @@ Para ejecutar:
 1. Descargue y descomprima el proyecto
 2. Abra la consola sobre la carpeta en la que se encuentra el projecto
 3. Ejecute la linea 'npm install'
-4. Abra en el navegador 'localhost:3000'
+4. Ejecute la linea 'node src/app.js'
+5. Abra en el navegador 'localhost:3000'
 
 Datos:
 1. Los datos para ingresar como coordinador son los siguientes:
