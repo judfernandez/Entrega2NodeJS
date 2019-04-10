@@ -92,24 +92,41 @@ app.post('/cursoregistrado', (req, res) => {
 });
 
 app.post('/index', (req, res) => {
-    let usuario = new Usuario({
-        cedula: parseInt(req.body.cedula),
-        nombre: req.body.nombre,
-        correo: req.body.correo,
-        telefono: parseInt(req.body.telefono),
-        tipo: req.body.tipo
-    })
-
-    usuario.save((err, resultado) => {
+    let usuario;
+    Usuario.findOne({ cedula: parseInt(req.body.cedula) }).exec((err, res) => {
         if (err) {
-            console.log("La cagaste mafren");
-            res.render('index');
+            return console.log(err);
         }
-        console.log("Funca la wea vea su objeto: ");
-        console.log(resultado);
-        res.render('index');
-    })
-
+        console.log(res)
+        if (!res) {
+            usuario = new Usuario({
+                cedula: cedula,
+                nombre: nombre,
+                correo: correo,
+                telefono: telefono,
+                tipo: 'aspirante'
+            });
+            usuario.save((err, res) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('guardado' + res);
+            });
+        } else {
+            usuario = new Usuario({
+                "cedula": res.cedula,
+                "nombre": res.nombre,
+                "correo": res.correo,
+                "telefono": res.telefono,
+                "tipo": res.tipo
+            })
+        }
+    });
+    setTimeout(function () {
+        res.render('index', {
+            usuario: usuario
+        });
+    }, 3000);
 });
 
 app.get('/', (req, res) => {
