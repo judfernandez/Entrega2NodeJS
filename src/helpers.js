@@ -2,6 +2,63 @@ const hbs = require('hbs');
 const fs = require('fs');
 const Usuario = require('./../modelos/usuario');
 const Curso = require('./../modelos/curso');
+const Matricula = require('./../modelos/matricula');
+
+//helpers para manipular mongoosee
+hbs.registerHelper('obtenerUsuarioPorCedula', (cedula) => {
+    Usuario.findOne({ cedula: cedula }, (err, resultado) => {
+
+        if (err) {
+            return console.log(err)
+        }
+
+        if (!resultado) {
+            console.log("No existe usuario con cedula: " + cedula);
+        } else {
+            console.log('Se encontro el usuario: ' + resultado.nombre);
+            return (resultado);
+        }
+
+    })
+});
+
+hbs.registerHelper('obtenerCursoPorId', (id) => {
+    Curso.findOne({ id: id }, (err, resultado) => {
+
+        if (err) {
+            return console.log(err)
+        }
+
+        if (!resultado) {
+            console.log("No existe el curso con id: " + id);
+        } else {
+            console.log('Se encontro el curso: ' + resultado.nombre_curso);
+            return (resultado.nombre_curso);
+        }
+
+    })
+});
+
+hbs.registerHelper('obtenerMatriculaPorCedulaId', (cedula, id) => {
+    Matricula.findOne({ cedula: cedula, id: id }, (err, resultado) => {
+        if (err) {
+            return console.log(err)
+        }
+
+        if (!resultado) {
+            return console.log("No existe matricula para cedula: " + cedula + " en el curso: " + id);
+        } else {
+            console.log('Se encontro la matricula de cedula: ' + resultado.cedula + " en el curso: " + resultado.id);
+            return (resultado);
+        }
+
+    })
+});
+
+//helpers necesarios usando los de mongo
+hbs.registerHelper('')
+
+//Otros helpers
 hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
@@ -297,12 +354,22 @@ hbs.registerHelper('listar2', () => {
 });
 
 
-hbs.registerHelper('listar',(usuario)=>{
+hbs.registerAsyncHelper('listar', (usuario) => {
+    console.log("Su rol es:  " + usuario.tipo);
+    let listaCursos = null;
 
     if (usuario.tipo == 'coordinador') {
 
-        listaCursos = require('./cursos.json');
-        texto = "<div class='table-responsive'> <table class='table table-hover'>\
+        let texto = Curso.find({}).exec((err, res) => {
+            if (err) {
+                return console.log("Error al traer la lista de cursos");
+            }
+            console.log(res);
+            listaCursos = res;
+
+            console.log(listaCursos);
+            console.log("Empieza el texto");
+            texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
                 <th>ID:</th>\
                 <th>NOMBRE:</th>\
@@ -314,25 +381,42 @@ hbs.registerHelper('listar',(usuario)=>{
                 </thead>\
                 <tbody>";
 
-        listaCursos.forEach(cursos => {
-            texto = (texto +
-                "<tr class='table-info text-center'>" +
-                '<td>' + cursos.id + '</td>' +
-                '<td>' + cursos.nombre_curso + '</td>' +
-                '<td>' + cursos.descripcion + '</td>' +
-                '<td>' + cursos.valor + '</td>' +
-                '<td>' + cursos.modalidad + '</td>' +
-                '<td>' + cursos.intensidad + '</td>' +
-                '<td>' + cursos.estado + '</td>' +
-                '</tr>');
+            listaCursos.forEach(cursos => {
+                console.log("Segunda parte del texto");
+                texto = (texto +
+                    "<tr class='table-info text-center'>" +
+                    '<td>' + cursos.id + '</td>' +
+                    '<td>' + cursos.nombre_curso + '</td>' +
+                    '<td>' + cursos.descripcion + '</td>' +
+                    '<td>' + cursos.valor + '</td>' +
+                    '<td>' + cursos.modalidad + '</td>' +
+                    '<td>' + cursos.intensidad + '</td>' +
+                    '<td>' + cursos.estado + '</td>' +
+                    '</tr>');
+            })
+            console.log("Tercera parte del texto");
+            texto = (texto + "</tbody></table><form action='/coordinador' method='get'><button class='btn btn-dark'>REGISTRAR CURSO</button></form><br>" +
+                "<form action='/coordinador2' method='get'><button class='btn btn-dark'>CERRAR CURSO</button></form><br>" +
+                "<form action='/coordinador3' method='get'><button class='btn btn-dark'>DESMATRICULAR ESTUDIANTE</button></form><br>" +
+                "<form action='/coordinador4' method='get'><button class='btn btn-dark'>MODIFICAR USUARIOS</button></form><br></div><br></div>");
+            console.log("Finaliza el texto");
+
+            console.log("Devuelve el texto");
+            console.log(texto);
+            
         })
-        texto = (texto + "</tbody></table><form action='/coordinador' method='get'><button class='btn btn-dark'>REGISTRAR CURSO</button></form><br>" +
-            "<form action='/coordinador2' method='get'><button class='btn btn-dark'>CERRAR CURSO</button></form><br>" +
-            "<form action='/coordinador3' method='get'><button class='btn btn-dark'>DESMATRICULAR ESTUDIANTE</button></form><br>" +
-            "<form action='/coordinador4' method='get'><button class='btn btn-dark'>MODIFICAR USUARIOS</button></form><br></div><br></div>");
+        return texto;
+
     } else {
-        listaCursos = require('./cursos.json');
-        texto = "<div class='table-responsive'> <table class='table table-hover'>\
+        Curso.find().exec((err, res) => {
+            if (err) {
+                return console.log("Error al traer la lista de cursos");
+            }
+            console.log(res);
+            listaCursos = res;
+
+            console.log(listaCursos);
+            texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
                 <th>ID:</th>\
                 <th>NOMBRE:</th>\
@@ -343,31 +427,33 @@ hbs.registerHelper('listar',(usuario)=>{
                 </thead>\
                 <tbody>";
 
-        listaCursos.forEach(cursos => {
-            if (cursos.estado == 'disponible') {
-                texto = (texto +
-                    "<tr class='table-info text-center'>" +
-                    '<td>' + cursos.id + '</td>' +
-                    '<td>' + cursos.nombre_curso + '</td>' +
-                    '<td>' + cursos.descripcion + '</td>' +
-                    '<td>' + cursos.valor + '</td>' +
-                    '<td><div class="accordion" id="accordionExample"></div>' +
-                    '<div class="card">' +
-                    '<div class="card-header" id="headingOne">' +
-                    '<h5 class="mb-0">' +
-                    '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
-                    "Detalles" +
-                    '</button></h5></div>' +
-                    '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
-                    '<div class="card-body">' +
-                    "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
-                    '</div></div></div></div></td>' +
-                    '<td><form action="/inscrito?cedula=' + usuario.cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
-                    '</tr>');
-            }
+            listaCursos.forEach(cursos => {
+                if (cursos.estado == 'disponible') {
+                    texto = (texto +
+                        "<tr class='table-info text-center'>" +
+                        '<td>' + cursos.id + '</td>' +
+                        '<td>' + cursos.nombre_curso + '</td>' +
+                        '<td>' + cursos.descripcion + '</td>' +
+                        '<td>' + cursos.valor + '</td>' +
+                        '<td><div class="accordion" id="accordionExample"></div>' +
+                        '<div class="card">' +
+                        '<div class="card-header" id="headingOne">' +
+                        '<h5 class="mb-0">' +
+                        '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
+                        "Detalles" +
+                        '</button></h5></div>' +
+                        '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
+                        '<div class="card-body">' +
+                        "Modalidad: " + cursos.modalidad + '<br>Intensidad: ' + cursos.intensidad +
+                        '</div></div></div></div></td>' +
+                        '<td><form action="/inscrito?cedula=' + usuario.cedula + '&id=' + cursos.id + ' " method="post"><button class="btn btn-dark">INSCRIBIR</button></form></td>' +
+                        '</tr>');
+                }
+            })
+
+            texto = (texto + "</tbody></table><form action='/aspirante?cedula=" + usuario.cedula + "' method='post'><button class='btn btn-dark'>DARME DE BAJA EN UN CURSO</button></form><br></div>");
+            return texto;
         })
-        texto = (texto + "</tbody></table><form action='/aspirante?cedula=" + usuario.cedula + "' method='post'><button class='btn btn-dark'>DARME DE BAJA EN UN CURSO</button></form><br></div>");
 
     }
-    return texto;
 });

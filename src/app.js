@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Usuario = require('./../modelos/usuario');
 const Curso = require('./../modelos/curso');
+const Matricula = require('./../modelos/matricula');
+const session = require('express-session');
 const dirNode_modules = path.join(__dirname, '../node_modules');
 
 app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
@@ -23,6 +25,12 @@ hbs.registerPartials(directoriopartials);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'hbs');
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}))
 
 app.post('/inscrito', (req, res) => {
     console.log();
@@ -91,6 +99,40 @@ app.post('/cursoregistrado', (req, res) => {
     });
 });
 
+app.post('/indexlogin', (req, res) => {
+    let busqueda = {
+        cedula: req.body.cedula,
+        password: req.body.password
+    }
+
+    Usuario.findOne({ cedula: busqueda.cedula, password: busqueda.password }, (err, resultado) => {
+        console.log('cedula: ' + busqueda.cedula);
+        console.log('password: ' + busqueda.password);
+
+        if (err) {
+            return console.log(err)
+        }
+
+        if (!resultado) {
+            console.log("Cedula o contraseña incorrectos");
+            return res.render('login', {
+                texto: "Cedula o contraseña incorrectos, ingreselos nuevamente"
+            });
+
+        } else {
+            req.session.usuario = resultado;
+            console.log('Funca el sizas del ID ' + req.session.usuario._id);
+
+            return res.render('indexlogin', {
+                nombre: req.session.usuario.nombre,
+                usuario: req.session.usuario,
+                rol: req.session.usuario.tipo
+            });
+        }
+
+    })
+})
+
 app.post('/index', (req, res) => {
     let usuario;
     Usuario.findOne({ cedula: parseInt(req.body.cedula) }).exec((err, res) => {
@@ -100,10 +142,11 @@ app.post('/index', (req, res) => {
         console.log(res)
         if (!res) {
             usuario = new Usuario({
-                cedula: cedula,
-                nombre: nombre,
-                correo: correo,
-                telefono: telefono,
+                cedula: req.body.cedula,
+                nombre: req.body.nombre,
+                password: req.body.password,
+                correo: req.body.correo,
+                telefono: req.body.telefono,
                 tipo: 'aspirante'
             });
             usuario.save((err, res) => {
@@ -116,6 +159,7 @@ app.post('/index', (req, res) => {
             usuario = new Usuario({
                 "cedula": res.cedula,
                 "nombre": res.nombre,
+                "pasword": res.password,
                 "correo": res.correo,
                 "telefono": res.telefono,
                 "tipo": res.tipo
@@ -130,7 +174,24 @@ app.post('/index', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('login');
+    res.render('home');
+})
+
+app.get('/register', (req, res) => {
+    res.render('registro');
+})
+
+app.get('/login', (req, res) => {
+    res.render('login', {
+        texto: "Ingrese su cedula y su contraseña"
+    });
+})
+
+app.get('/test', (req, res) => {
+    res.render('test', {
+        cedula: 111,
+        id: "02"
+    })
 })
 
 

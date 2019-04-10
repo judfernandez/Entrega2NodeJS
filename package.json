@@ -7,7 +7,7 @@
     "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Juan David Fernandez Moreno",
+  "author": "Juan Fernandez - Mirai Kaneko - Santiago Quintero",
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.2",
@@ -16,6 +16,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "express-hbs": "^1.1.0",
+    "express-session": "^1.15.6",
     "hbs": "^4.0.3",
     "jquery": "^3.3.1",
     "mongoose": "^5.5.0",

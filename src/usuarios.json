@@ -2,6 +2,7 @@
     {
         "cedula": 1152454980,
         "nombre": "Admin",
+        "password": "claveadmin",
         "correo": "eladmin@potomail.com",
         "telefono": "5849240",
         "tipo": "coordinador"
@@ -9,13 +10,15 @@
     {
         "cedula": 111,
         "nombre": "ana",
+        "password": "claveana",
         "correo": "as",
         "telefono": 1,
         "tipo": "aspirante"
     },
     {
         "cedula": 123,
-        "nombre": "gordoforro",
+        "nombre": "gf",
+        "password": "clavegf",
         "correo": "s",
         "telefono": 1,
         "tipo": "aspirante"
@@ -23,6 +26,7 @@
     {
         "cedula": 211,
         "nombre": "a",
+        "password": "clavea",
         "correo": "a",
         "telefono": 1,
         "tipo": "aspirante"

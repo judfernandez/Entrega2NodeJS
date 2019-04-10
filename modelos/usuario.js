@@ -6,6 +6,10 @@ const usuarioSchema = new Schema({
         type: Number,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     nombre: {
         type: String,
         required: true
