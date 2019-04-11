@@ -3,10 +3,8 @@ const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const Usuario = require('./../modelos/usuario');
-const Curso = require('./../modelos/curso');
-const dirNode_modules = path.join(__dirname, '../node_modules');
+const dirNode_modules = path.join(__dirname, '../node_modules')
+
 
 app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
 app.use('/js', express.static(dirNode_modules + '/jquery/dist'));
@@ -92,28 +90,18 @@ app.post('/cursoregistrado', (req, res) => {
 });
 
 app.post('/index', (req, res) => {
-    let usuario = new Usuario({
+    res.render('index', {
         cedula: parseInt(req.body.cedula),
         nombre: req.body.nombre,
         correo: req.body.correo,
-        telefono: parseInt(req.body.telefono),
-        tipo: req.body.tipo
-    })
-
-    usuario.save((err, resultado) => {
-        if (err) {
-            console.log("La cagaste mafren");
-            res.render('index');
-        }
-        console.log("Funca la wea vea su objeto: ");
-        console.log(resultado);
-        res.render('index');
-    })
+        telefono: parseInt(req.body.telefono)
+    });
 
 });
 
 app.get('/', (req, res) => {
-    res.render('login');
+    res.render('login', {
+    })
 })
 
 
@@ -122,13 +110,6 @@ app.get('*', (req, res) => {
 });
 
 console.log(__dirname)
-
-mongoose.connect('mongodb://localhost:27017/nodedb', { useNewUrlParser: true }, (err) => {
-    if (err) {
-        return console.log("Fallo la conexion con la BD" + (err));
-    }
-    return console.log("Conexion con la BD exitosamente");
-});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
