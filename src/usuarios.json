@@ -2,10 +2,7 @@
     {
         "cedula": 1152454980,
         "nombre": "Admin",
-<<<<<<< HEAD
         "password": "claveadmin",
-=======
->>>>>>> parent of 4eca3d3... Progreso
         "correo": "eladmin@potomail.com",
         "telefono": "5849240",
         "tipo": "coordinador"
@@ -13,22 +10,15 @@
     {
         "cedula": 111,
         "nombre": "ana",
-<<<<<<< HEAD
         "password": "claveana",
-=======
->>>>>>> parent of 4eca3d3... Progreso
         "correo": "as",
         "telefono": 1,
         "tipo": "aspirante"
     },
     {
         "cedula": 123,
-<<<<<<< HEAD
         "nombre": "gf",
         "password": "clavegf",
-=======
-        "nombre": "gordoforro",
->>>>>>> parent of 4eca3d3... Progreso
         "correo": "s",
         "telefono": 1,
         "tipo": "aspirante"
@@ -36,10 +26,7 @@
     {
         "cedula": 211,
         "nombre": "a",
-<<<<<<< HEAD
         "password": "clavea",
-=======
->>>>>>> parent of 4eca3d3... Progreso
         "correo": "a",
         "telefono": 1,
         "tipo": "aspirante"

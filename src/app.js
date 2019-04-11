@@ -3,17 +3,12 @@ const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
 const mongoose = require('mongoose');
 const Usuario = require('./../modelos/usuario');
 const Curso = require('./../modelos/curso');
 const Matricula = require('./../modelos/matricula');
 const session = require('express-session');
 const dirNode_modules = path.join(__dirname, '../node_modules');
-=======
-const dirNode_modules = path.join(__dirname, '../node_modules')
-
->>>>>>> parent of 4eca3d3... Progreso
 
 app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
 app.use('/js', express.static(dirNode_modules + '/jquery/dist'));
@@ -104,7 +99,6 @@ app.post('/cursoregistrado', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 app.post('/indexlogin', (req, res) => {
     let busqueda = {
         cedula: req.body.cedula,
@@ -138,15 +132,6 @@ app.post('/indexlogin', (req, res) => {
 
     })
 })
-=======
-app.post('/index', (req, res) => {
-    res.render('index', {
-        cedula: parseInt(req.body.cedula),
-        nombre: req.body.nombre,
-        correo: req.body.correo,
-        telefono: parseInt(req.body.telefono)
-    });
->>>>>>> parent of 4eca3d3... Progreso
 
 app.post('/index', (req, res) => {
     let usuario;
@@ -189,7 +174,6 @@ app.post('/index', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-<<<<<<< HEAD
     res.render('home');
 })
 
@@ -207,9 +191,6 @@ app.get('/test', (req, res) => {
     res.render('test', {
         cedula: 111,
         id: "02"
-=======
-    res.render('login', {
->>>>>>> parent of 4eca3d3... Progreso
     })
 })
 
@@ -219,6 +200,13 @@ app.get('*', (req, res) => {
 });
 
 console.log(__dirname)
+
+mongoose.connect('mongodb://localhost:27017/nodedb', { useNewUrlParser: true }, (err) => {
+    if (err) {
+        return console.log("Fallo la conexion con la BD" + (err));
+    }
+    return console.log("Conexion con la BD exitosamente");
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
