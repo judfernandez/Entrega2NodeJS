@@ -1,12 +1,17 @@
 {{>header}}
 <div class="container text-center" style="border-width: 1px;border: solid; border-color: black">
-    <h1>{{{texto}}}</h1>
-    <form action="/indexlogin" method="post">
+    <form action="/index" method="post">
+        <p>Nombre:</p>
+        <input type="text" name="nombre" required>
+        <br>
         <p>Cedula:</p>
         <input type="number" name="cedula" required>
         <br>
-        <p>Contraseña:</p>
-        <input type="password" name="password" required>
+        <p>Correo:</p>
+        <input type="text" name="correo" required>
+        <br>
+        <p>Telefono:</p>
+        <input type="number" name="telefono" required>
         <br>
         <br>
         <button class="btn btn-dark">LOG IN</button>
