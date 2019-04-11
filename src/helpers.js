@@ -1,7 +1,6 @@
 const hbs = require('hbs');
 const fs = require('fs');
-const Usuario = require('./../modelos/usuario');
-const Curso = require('./../modelos/curso');
+
 hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
@@ -296,8 +295,36 @@ hbs.registerHelper('listar2', () => {
     return texto;
 });
 
+hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
+    listaUsuarios = require('./usuarios.json');
+    let duplicado = listaUsuarios.find(ver => ver.cedula == cedula);
 
-hbs.registerHelper('listar',(usuario)=>{
+    let texto;
+    let usuario;
+
+    if (!duplicado) {
+        usuario = {
+            "cedula": cedula,
+            "nombre": nombre,
+            "correo": correo,
+            "telefono": telefono,
+            "tipo": "aspirante"
+        };
+        listaUsuarios.push(usuario);
+        let datos = JSON.stringify(listaUsuarios);
+        fs.writeFile('./src/usuarios.json', datos, (err) => {
+            if (err) throw (err);
+            console.log('Usuario registrado exitosamente');
+        });
+    } else {
+        usuario = {
+            "cedula": duplicado.cedula,
+            "nombre": duplicado.nombre,
+            "correo": duplicado.correo,
+            "telefono": duplicado.telefono,
+            "tipo": duplicado.tipo
+        }
+    }
 
     if (usuario.tipo == 'coordinador') {
 
@@ -370,4 +397,4 @@ hbs.registerHelper('listar',(usuario)=>{
 
     }
     return texto;
-});
+})
