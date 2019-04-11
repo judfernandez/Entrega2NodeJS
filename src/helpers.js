@@ -295,40 +295,12 @@ hbs.registerHelper('listar2', () => {
     return texto;
 });
 
-hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
-    listaUsuarios = require('./usuarios.json');
-    let duplicado = listaUsuarios.find(ver => ver.cedula == cedula);
+hbs.registerHelper('listar', (usuario, listaCursos) => {
 
     let texto;
-    let usuario;
-
-    if (!duplicado) {
-        usuario = {
-            "cedula": cedula,
-            "nombre": nombre,
-            "correo": correo,
-            "telefono": telefono,
-            "tipo": "aspirante"
-        };
-        listaUsuarios.push(usuario);
-        let datos = JSON.stringify(listaUsuarios);
-        fs.writeFile('./src/usuarios.json', datos, (err) => {
-            if (err) throw (err);
-            console.log('Usuario registrado exitosamente');
-        });
-    } else {
-        usuario = {
-            "cedula": duplicado.cedula,
-            "nombre": duplicado.nombre,
-            "correo": duplicado.correo,
-            "telefono": duplicado.telefono,
-            "tipo": duplicado.tipo
-        }
-    }
 
     if (usuario.tipo == 'coordinador') {
 
-        listaCursos = require('./cursos.json');
         texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
                 <th>ID:</th>\
@@ -358,7 +330,7 @@ hbs.registerHelper('listar', (nombre, cedula, correo, telefono) => {
             "<form action='/coordinador3' method='get'><button class='btn btn-dark'>DESMATRICULAR ESTUDIANTE</button></form><br>" +
             "<form action='/coordinador4' method='get'><button class='btn btn-dark'>MODIFICAR USUARIOS</button></form><br></div><br></div>");
     } else {
-        listaCursos = require('./cursos.json');
+
         texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
                 <th>ID:</th>\
