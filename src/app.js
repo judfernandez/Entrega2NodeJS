@@ -92,16 +92,25 @@ app.post('/cursoregistrado', (req, res) => {
 app.post('/index', (req, res) => {
     res.render('index', {
         cedula: parseInt(req.body.cedula),
-        nombre: req.body.nombre,
-        correo: req.body.correo,
-        telefono: parseInt(req.body.telefono)
+        password: req.body.password
     });
 
 });
 
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/registrado', (req, res) => {
+    res.render("registrado")
+})
+
+app.get('/register', (req, res) => {
+    res.render("register")
+})
+
 app.get('/', (req, res) => {
-    res.render('login', {
-    })
+    res.render('home')
 })
 
 
