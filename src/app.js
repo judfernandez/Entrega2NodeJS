@@ -9,16 +9,36 @@ const Usuario = require('./../modelos/usuario');
 const Curso = require('./../modelos/curso');
 const Matricula = require('./../modelos/matricula');
 var listaCursos;
+var listaMatriculas;
+var listaUsuarios;
+
+
+
 
 mongoose.connect('mongodb://localhost:27017/nodedb', { useNewUrlParser: true }, (err) => {
     if (err) {
         return console.log("Fallo la conexion con la BD" + (err));
     }
+    actualizarCursos();
+    actualizarMatriculas();
+    actualizarUsuarios();
     return console.log("Conexion con la BD exitosamente");
 });
 
-actualizarCursos()
 
+
+function actualizarUsuarios() {
+    Usuario.find({}).exec((err, res) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            listaUsuarios = res;
+            console.log('se obtuvieron los usuarios');
+            console.log(listaUsuarios.length);
+        }
+    })
+}
 function actualizarCursos() {
     Curso.find({}).exec((err, res) => {
         if (err) {
@@ -28,6 +48,18 @@ function actualizarCursos() {
             listaCursos = res;
             console.log('se obtuvieron los cursos');
             console.log(listaCursos.length);
+        }
+    })
+}
+function actualizarMatriculas() {
+    Matricula.find({}).exec((err, res) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            listaMatriculas = res;
+            console.log('se obtuvieron las matriculas');
+            console.log(listaMatriculas.length);
         }
     })
 }
@@ -286,19 +318,19 @@ app.post('/actualizardatos', (req, res) => {
                         telefono: parseInt(req.body.telefono),
                         tipo: req.body.tipo
                     }
-                }).exec((err,response)=>{
-                    if(err){
+                }).exec((err, response) => {
+                    if (err) {
                         return console.log(err);
                     }
-                    else{
-                        res.render('actualizardatos',{
-                            texto:'Se han actualizado los datos.'
+                    else {
+                        res.render('actualizardatos', {
+                            texto: 'Se han actualizado los datos.'
                         })
                     }
                 })
             }
-            else{
-                res.render('coordinador4',{
+            else {
+                res.render('coordinador4', {
                     texto: 'No se encontro el usuario.'
                 })
             }
@@ -422,35 +454,55 @@ app.post('/cursoregistrado', (req, res) => {
 
 app.post('/index', (req, res) => {
 
-    Usuario.findOne({ cedula: parseInt(req.body.cedula) }).exec((err, response) => {
+    Matricula.find({}).exec((err, resM) => {
         if (err) {
             return console.log(err);
         }
         else {
-            if (!response) {
-                console.log('noresponse');
-                res.render('login', {
-                    texto: 'Credenciales Incorrectas'
-                })
-            }
-            else {
-                if (response.password == req.body.password) {
-                    console.log(response)
-                    res.render('index', {
-                        nombre: response.nombre,
-                        usuario: response,
-                        listaCursos: listaCursos
-                    })
+            Usuario.find({}).exec((err, resU) => {
+                if (err) {
+                    return console.log(err);
                 }
                 else {
-                    console.log('wrongpass')
-                    res.render('login', {
-                        texto: 'Credenciales Incorrectas'
+                    Usuario.findOne({ cedula: parseInt(req.body.cedula) }).exec((err, response) => {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        else {
+                            if (!response) {
+                                console.log('noresponse');
+                                res.render('login', {
+                                    texto: 'Credenciales Incorrectas'
+                                })
+                            }
+                            else {
+                                if (response.password == req.body.password) {
+                                    console.log(response)
+                                    res.render('index', {
+                                        nombre: response.nombre,
+                                        usuario: response,
+                                        listaCursos: listaCursos,
+                                        listaMatriculas: resM,
+                                        listaUsuarios: resU
+                                    })
+                                }
+                                else {
+                                    console.log('wrongpass')
+                                    res.render('login', {
+                                        texto: 'Credenciales Incorrectas'
+                                    })
+                                }
+                            }
+                        }
                     })
                 }
-            }
+            })
         }
     })
+
+
+
+
 
 
 
@@ -510,6 +562,7 @@ app.get('*', (req, res) => {
 });
 
 console.log(__dirname)
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
