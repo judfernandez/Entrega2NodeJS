@@ -184,6 +184,7 @@ hbs.registerHelper('eliminarCurso', (cedula, id) => {
     return texto
 })
 
+//no se necesita mas
 hbs.registerHelper('registrarCurso', (id, nombre_curso, descripcion, modalidad, valor, intensidad, estado) => {
     listaCursos = require('./cursos.json');
     let duplicado = listaCursos.find(ver => ver.id == id);
@@ -314,6 +315,7 @@ hbs.registerHelper('listar', (usuario, listaCursos) => {
                 <tbody>";
 
         listaCursos.forEach(cursos => {
+
             texto = (texto +
                 "<tr class='table-info text-center'>" +
                 '<td>' + cursos.id + '</td>' +

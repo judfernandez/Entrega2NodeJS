@@ -101,16 +101,51 @@ app.post('/cerrado', (req, res) => {
 })
 
 app.post('/cursoregistrado', (req, res) => {
-    console.log(req.body)
-    res.render('cursoregistrado', {
-        nombre_curso: req.body.nombre_curso,
-        id: (req.body.id),
-        descripcion: req.body.descripcion,
-        valor: parseInt(req.body.valor),
-        modalidad: req.body.modalidad,
-        intensidad: parseInt(req.body.intensidad),
-        estado: req.body.estado,
-    });
+
+    Curso.findOne({ id: req.body.id }).exec((err, response) => {
+        if (err) {
+            return console.log(err)
+        }
+        else {
+            if (response) {
+                res.render('coordinador', {
+                    texto: 'El curso con ese id ya existe.'
+                })
+            }
+            else {
+                if (req.body.modalidad == null) {
+                    req.body.modalidad = 'No especificada'
+                }
+                
+
+                let cursoNuevo = new Curso({
+                    nombre_curso: req.body.nombre_curso,
+                    id: (req.body.id),
+                    descripcion: req.body.descripcion,
+                    valor: parseInt(req.body.valor),
+                    modalidad: req.body.modalidad,
+                    intensidad: (req.body.intensidad),
+                    estado: "disponible",
+                })
+
+                cursoNuevo.save((err, response) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        console.log(response);
+                        actualizarCursos();
+                        res.render('cursoregistrado', {
+                            texto: "El curso ha sido registrado."
+                        })
+                    }
+                })
+
+            }
+        }
+    })
+
+
 });
 
 app.post('/index', (req, res) => {

@@ -7,6 +7,9 @@
     <h2>
         Ingrese los datos
     </h2>
+    <h2>
+        {{texto}}
+    </h2>
     <form action="/cursoregistrado" method="post">
         <p>Nombre del curso:</p>
         <input type="text" name="nombre_curso" required>
@@ -21,10 +24,10 @@
         <input type="number" name="valor" required>
         <br>
         <p>Modalidad:</p>
-        <input type="text" name="modalidad">
+        <input type="text" name="modalidad" value = '-'>
         <br>
         <p>Intensidad horaria:</p>
-        <input type="text" name="intensidad" value="-">
+        <input type="text" name="intensidad" value = 0>
         <br>
         <br>
         <button class="btn btn-dark">REGISTRAR</button>
