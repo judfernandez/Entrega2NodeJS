@@ -7,6 +7,7 @@ const dirNode_modules = path.join(__dirname, '../node_modules');
 const mongoose = require('mongoose');
 const Usuario = require('./../modelos/usuario');
 const Curso = require('./../modelos/curso');
+const Matricula = require('./../modelos/matricula');
 var listaCursos;
 
 mongoose.connect('mongodb://localhost:27017/nodedb', { useNewUrlParser: true }, (err) => {
@@ -47,10 +48,35 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
 
 app.post('/inscrito', (req, res) => {
-    console.log();
-    res.render('inscrito', {
-        cedula: parseInt(req.query.cedula),
-        id: (req.query.id)
+    
+    Matricula.findOne({ cedula: parseInt(req.query.cedula), id: req.query.id }).exec((err, response) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            if (response) {
+                res.render('inscrito', {
+                    texto: 'Ya se encuentra matriculado en el curso.'
+                })
+            }
+            else {
+                let matriculaNueva = new Matricula({
+                    cedula: parseInt(req.query.cedula),
+                    id: req.query.id
+                })
+                matriculaNueva.save((err, response) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        console.log('guardado' + response);
+                        res.render('inscrito', {
+                            texto: 'Se ha matriculado con exito.'
+                        })
+                    }
+                })
+            }
+        }
     })
 });
 

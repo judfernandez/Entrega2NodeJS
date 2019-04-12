@@ -225,7 +225,7 @@ hbs.registerHelper('registrarCurso', (id, nombre_curso, descripcion, modalidad, 
     return texto;
 
 });
-
+//no se necesita mas
 hbs.registerHelper('inscribir', (cedula, id) => {
     let texto;
     let matricula;
