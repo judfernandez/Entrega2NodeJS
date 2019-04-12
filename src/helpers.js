@@ -90,30 +90,21 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
         return texto
     }
 });
-//no es necesario
+
 hbs.registerHelper('cerrar', (id) => {
-    listaCursos = require('./cursos.json');
-    let busqueda = listaCursos.find(ver => ver.id == id);
-    let curso = {
-        nombre_curso: busqueda.nombre_curso,
-        id: id,
-        descripcion: busqueda.descripcion,
-        valor: busqueda.valor,
-        modalidad: busqueda.modalidad,
-        intensidad: busqueda.intensidad,
-        estado: 'cerrado'
-    }
 
-    listaCursos.splice(listaCursos.indexOf(busqueda));
-    listaCursos.push(curso);
+    let texto = ("<form action='/docenteasignado?id="+id+"' method='post'>" +
+        "<p>Cedula:</p>" +
+        "<input type='number' name='cedula' required>" +
+        " <br>" +
+        " <br>" +
+        " <button class='btn btn-dark'>ASIGNAR</button>" +
+        "<br>" +
+        "</form>")
 
-    let datos = JSON.stringify(listaCursos);
-    fs.writeFile('./src/cursos.json', datos, (err) => {
-        if (err) throw (err);
-        console.log('Archivo guardado con exito');
-    });
 
-    return "El curso se cerro exitosamente"
+
+    return texto;
 });
 
 hbs.registerHelper('eliminarCurso', (cedula, cursosF) => {

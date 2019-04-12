@@ -227,19 +227,60 @@ app.post('/actualizardatos', (req, res) => {
 })
 
 app.post('/cerrado', (req, res) => {
-    
-    Curso.updateOne({id:req.query.id},{$set:{estado:'cerrado'}}).exec((err,response)=>{
-        if(err){
+
+    Curso.updateOne({ id: req.query.id }, { $set: { estado: 'cerrado' } }).exec((err, response) => {
+        if (err) {
             return console.log(err);
         }
-        else{
+        else {
             console.log('cambiado');
             console.log(response);
-            res.render('cerrado',{
-                texto:'Curso cerrado exitosamente.'
+            res.render('cerrado', {
+                texto: 'Para cerrar el curso asigne un docente.',
+                id: req.query.id
             })
         }
     })
+})
+
+app.post('/docenteasignado', (req, res) => {
+
+    Usuario.findOne({ cedula: parseInt(req.body.cedula), tipo: 'docente' }).exec((err, response) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            if (response) {
+
+                Curso.updateOne({ id: req.query.id }, { $set: { docente: parseInt(req.body.cedula) } }).exec((err, response1) => {
+                    if (err) {
+                        return console.log(err)
+                    }
+                    else {
+                        res.render('docenteasignado', {
+                            texto: ('El docente ' + response.nombre + ' ha sido asignado.')
+                        })
+                    }
+                })
+
+            }
+            else {
+                Curso.updateOne({ id: req.query.id }, { $set: { estado: 'disponible' } }).exec((err, response) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        console.log(response);
+                        res.render('cerrado', {
+                            texto: 'El docente no existe. Vuelva a asignar.',
+                            id: req.query.id
+                        })
+                    }
+                })
+            }
+        }
+    })
+
 })
 
 app.post('/cursoregistrado', (req, res) => {
