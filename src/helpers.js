@@ -90,7 +90,7 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
         return texto
     }
 });
-
+//no es necesario
 hbs.registerHelper('cerrar', (id) => {
     listaCursos = require('./cursos.json');
     let busqueda = listaCursos.find(ver => ver.id == id);
@@ -116,38 +116,11 @@ hbs.registerHelper('cerrar', (id) => {
     return "El curso se cerro exitosamente"
 });
 
-hbs.registerHelper('eliminarCurso', (cedula, id) => {
-    listaCursos = require('./cursos.json');
-    listaMatricula = require('./matricula.json');
-    let matriculado = listaMatricula.filter(ver => ver.cedula == cedula);
-    let cursosMatriculados = [];
+hbs.registerHelper('eliminarCurso', (cedula, cursosF) => {
+
     let texto;
 
-    if (id) {
-        console.log('un id perron = ' + id);
-        let temporal = listaMatricula.filter(ver => ver.id != id && ver.cedula == cedula);
-        matriculado = temporal.slice();
-        console.log(matriculado);
-        listaMatricula.filter(ver => ver.cedula != cedula).forEach(iter => {
-            temporal.push(iter);
-        });
-
-        console.log(temporal);
-        let datos = JSON.stringify(temporal);
-        fs.writeFile('./src/matricula.json', datos, (err) => {
-            if (err) throw (err);
-            console.log('Archivo guardado con exito');
-        });
-    }
-    console.log(matriculado);
-
-    matriculado.forEach(szs => {
-        encontrado = listaCursos.find(cur => cur.id == szs.id);
-        cursosMatriculados.push(encontrado);
-    });
-
-    console.log(matriculado);
-    console.log(cursosMatriculados);
+    // console.log(cursosF)
 
     texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
@@ -160,7 +133,7 @@ hbs.registerHelper('eliminarCurso', (cedula, id) => {
                 </thead>\
                 <tbody>";
 
-    cursosMatriculados.forEach(cursos => {
+    cursosF.forEach(cursos => {
         texto = (texto +
             "<tr class='table-info text-center'>" +
             '<td>' + cursos.id + '</td>' +
@@ -252,11 +225,10 @@ hbs.registerHelper('inscribir', (cedula, id) => {
 
 });
 
-hbs.registerHelper('listar2', () => {
+hbs.registerHelper('listar2', (cursosD, matriculasD) => {
+
     let texto;
-    listaCursos = require('./cursos.json');
-    listaMatricula = require('./matricula.json');
-    listaUsuarios = require('./usuarios.json');
+
     texto = "<div class='table-responsive'> <table class='table table-hover'>\
             <thead class='thead-dark text-center'>\
             <th>ID:</th>\
@@ -268,28 +240,28 @@ hbs.registerHelper('listar2', () => {
             </thead>\
             <tbody>";
 
-    listaCursos.forEach(cursos => {
-        if (cursos.estado == 'disponible') {
-            texto = (texto +
-                "<tr class='table-info text-center'>" +
-                '<td>' + cursos.id + '</td>' +
-                '<td>' + cursos.nombre_curso + '</td>' +
-                '<td>' + cursos.descripcion + '</td>' +
-                '<td>' + cursos.valor + '</td>' +
-                '<td><div class="accordion" id="accordionExample"></div>' +
-                '<div class="card">' +
-                '<div class="card-header" id="headingOne">' +
-                '<h5 class="mb-0">' +
-                '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
-                "Detalles" +
-                '</button></h5></div>' +
-                '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
-                '<div class="card-body">' +
-                "Personas inscritas: " + listaMatricula.filter(ver => ver.id == cursos.id).length +
-                '</div></div></div></div></td>' +
-                '<td><form action="/cerrado?id=' + cursos.id + ' " method="post"><button class="btn btn-dark">CERRAR</button></form></td>' +
-                '</tr>');
-        }
+    cursosD.forEach(cursos => {
+
+        texto = (texto +
+            "<tr class='table-info text-center'>" +
+            '<td>' + cursos.id + '</td>' +
+            '<td>' + cursos.nombre_curso + '</td>' +
+            '<td>' + cursos.descripcion + '</td>' +
+            '<td>' + cursos.valor + '</td>' +
+            '<td><div class="accordion" id="accordionExample"></div>' +
+            '<div class="card">' +
+            '<div class="card-header" id="headingOne">' +
+            '<h5 class="mb-0">' +
+            '<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' +
+            "Detalles" +
+            '</button></h5></div>' +
+            '<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">' +
+            '<div class="card-body">' +
+            "Personas inscritas: " + matriculasD.filter(ver => ver.id == cursos.id).length +
+            '</div></div></div></div></td>' +
+            '<td><form action="/cerrado?id=' + cursos.id + ' " method="post"><button class="btn btn-dark">CERRAR</button></form></td>' +
+            '</tr>');
+
     })
     texto = (texto + "</tbody></table></div>");
 

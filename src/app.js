@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
 
 app.post('/inscrito', (req, res) => {
-    
+
     Matricula.findOne({ cedula: parseInt(req.query.cedula), id: req.query.id }).exec((err, response) => {
         if (err) {
             return console.log(err);
@@ -81,10 +81,93 @@ app.post('/inscrito', (req, res) => {
 });
 
 app.post('/aspirante', (req, res) => {
-    res.render('aspirante', {
-        cedula: req.query.cedula,
-        id: req.query.id
-    });
+
+    if (req.query.id) {
+        Matricula.remove({ cedula: parseInt(req.query.cedula), id: req.query.id }).exec((err, response) => {
+            if (err) {
+                return console.log(err);
+            }
+            else {
+                if (response) {
+                    console.log('encontro y borro');
+
+                    console.log(response);
+                    Matricula.find({ cedula: parseInt(req.query.cedula) }).exec((err, response) => {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        else {
+                            console.log(response);
+                            var idMatriculas = new Array();
+                            response.forEach(cosiampiro => {
+                                idMatriculas.push(cosiampiro.id);
+                            });
+                            Curso.find({ id: { $in: idMatriculas } }).exec((err, response) => {
+                                if (err) {
+                                    return console.log(err);
+                                }
+                                else {
+                                    if (response) {
+                                        console.log(response);
+                                        response.forEach(j => {
+                                            console.log(j.nombre_curso)
+                                        })
+                                        res.render('aspirante', {
+                                            cedula: parseInt(req.query.cedula),
+                                            cursosF: response
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
+
+
+                }
+                else {
+                    console.log('no se encontro');
+
+                }
+            }
+        })
+    }
+    else {
+        console.log(req.query.cedula)
+        Matricula.find({ cedula: parseInt(req.query.cedula) }).exec((err, response) => {
+            if (err) {
+                return console.log(err);
+            }
+            else {
+                console.log(response);
+                var idMatriculas = new Array();
+                response.forEach(cosiampiro => {
+                    idMatriculas.push(cosiampiro.id);
+                });
+                Curso.find({ id: { $in: idMatriculas } }).exec((err, response) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        if (response) {
+                            console.log(response);
+                            response.forEach(j => {
+                                console.log(j.nombre_curso)
+                            })
+                            res.render('aspirante', {
+                                cedula: parseInt(req.query.cedula),
+                                cursosF: response
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+    // res.render('aspirante', {
+    //     cedula: req.query.cedula,
+    //     id: req.query.id
+    // });
 });
 
 app.post('/desmatricular', (req, res) => {
@@ -99,7 +182,30 @@ app.get('/coordinador', (req, res) => {
 });
 
 app.get('/coordinador2', (req, res) => {
-    res.render('coordinador2');
+
+    Curso.find({ estado: 'disponible' }).exec((err, response) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            console.log(response);
+            let cursosD = response;
+            Matricula.find({}).exec((err, response) => {
+                if (err) {
+                    return console.log(err);
+                }
+                else {
+                    let matriculasD = response;
+                    res.render('coordinador2', {
+                        cursosD: cursosD,
+                        matriculasD: matriculasD
+                    })
+                }
+            })
+        }
+    })
+
+    //res.render('coordinador2');
 })
 
 app.get('/coordinador3', (req, res) => {
@@ -121,9 +227,19 @@ app.post('/actualizardatos', (req, res) => {
 })
 
 app.post('/cerrado', (req, res) => {
-    res.render('cerrado', {
-        id: req.query.id
-    });
+    
+    Curso.updateOne({id:req.query.id},{$set:{estado:'cerrado'}}).exec((err,response)=>{
+        if(err){
+            return console.log(err);
+        }
+        else{
+            console.log('cambiado');
+            console.log(response);
+            res.render('cerrado',{
+                texto:'Curso cerrado exitosamente.'
+            })
+        }
+    })
 })
 
 app.post('/cursoregistrado', (req, res) => {
@@ -142,7 +258,7 @@ app.post('/cursoregistrado', (req, res) => {
                 if (req.body.modalidad == null) {
                     req.body.modalidad = 'No especificada'
                 }
-                
+
 
                 let cursoNuevo = new Curso({
                     nombre_curso: req.body.nombre_curso,
