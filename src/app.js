@@ -1,3 +1,4 @@
+require('./config');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -15,7 +16,7 @@ var listaUsuarios;
 
 
 
-mongoose.connect('mongodb://localhost:27017/nodedb', { useNewUrlParser: true }, (err) => {
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err) => {
     if (err) {
         return console.log("Fallo la conexion con la BD" + (err));
     }
@@ -587,7 +588,6 @@ app.get('*', (req, res) => {
 console.log(__dirname)
 
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log('Servidor en el puerto ' + port);
+app.listen(process.env.PORT, () => {
+    console.log('Servidor en el puerto ' + process.env.PORT);
 })
