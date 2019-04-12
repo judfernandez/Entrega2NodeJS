@@ -4,7 +4,7 @@ const fs = require('fs');
 hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
-
+//nel perro -20
 hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono, tipo) => {
     listaUsuarios = require('./usuarios.json');
     console.log(cedula);

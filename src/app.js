@@ -272,13 +272,47 @@ app.get('/coordinador4', (req, res) => {
 })
 
 app.post('/actualizardatos', (req, res) => {
-    res.render('actualizardatos', {
+
+    Usuario.findOne({ cedula: parseInt(req.body.cedula) }).exec((err, response) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            if (response) {
+                Usuario.updateOne({ cedula: parseInt(req.body.cedula) }, {
+                    $set: {
+                        nombre: req.body.nombre,
+                        correo: req.body.correo,
+                        telefono: parseInt(req.body.telefono),
+                        tipo: req.body.tipo
+                    }
+                }).exec((err,response)=>{
+                    if(err){
+                        return console.log(err);
+                    }
+                    else{
+                        res.render('actualizardatos',{
+                            texto:'Se han actualizado los datos.'
+                        })
+                    }
+                })
+            }
+            else{
+                res.render('coordinador4',{
+                    texto: 'No se encontro el usuario.'
+                })
+            }
+        }
+    })
+
+
+    /* res.render('actualizardatos', {
         cedula: parseInt(req.body.cedula),
         nombre: req.body.nombre,
         correo: req.body.correo,
         telefono: parseInt(req.body.telefono),
         tipo: req.body.tipo
-    });
+    }); */
 })
 
 app.post('/cerrado', (req, res) => {
