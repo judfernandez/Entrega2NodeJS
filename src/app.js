@@ -33,9 +33,32 @@ function actualizarUsuarios() {
             return console.log(err);
         }
         else {
-            listaUsuarios = res;
-            console.log('se obtuvieron los usuarios');
-            console.log(listaUsuarios.length);
+            if (res.length == 0) {
+                usuario = new Usuario({
+                    cedula: 123,
+                    nombre: 'Admin',
+                    correo: 'eladmin@potomail.com',
+                    password: 'password',
+                    telefono: 2222222,
+                    tipo: 'coordinador'
+                })
+                usuario.save((err, res)=> {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        console.log('se crea el admin' + res);
+                        actualizarUsuarios();
+                    }
+                })
+            }
+            else{
+                listaUsuarios = res;
+                console.log('se obtuvieron los usuarios');
+                console.log(listaUsuarios.length);
+            }
+            
+            
         }
     })
 }

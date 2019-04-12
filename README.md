@@ -1,4 +1,4 @@
-#Entrega 2 NodeJS con el TdeA
+#Entrega 3 NodeJS con el TdeA
 Grupo: Praise the sun
 Autores:
 -Juan David Ferenandez Moreno
@@ -14,9 +14,8 @@ Para ejecutar:
 
 Datos:
 1. Los datos para ingresar como coordinador son los siguientes:
-    1. cedula: 1152454980
-    2. nombre: Admin
-    3. correo: eladmin@potomail.com
-    4. telefono: 5849240
-2. Si ingresa con datos que no existian previamente en el json se creara su nuevo usuario
-3. Si ingresa con datos que existen en el json se realiza el log in
+    1. cedula: 123
+    2. contraseña: password
+    3. nombre: Admin
+    4. correo: eladmin@potomail.com
+    5. telefono: 2222222
