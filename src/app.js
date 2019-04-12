@@ -171,10 +171,65 @@ app.post('/aspirante', (req, res) => {
 });
 
 app.post('/desmatricular', (req, res) => {
-    res.render('desmatricular', {
-        cedula: req.body.cedula,
-        id: req.body.id
-    });
+
+    Matricula.findOne({ cedula: parseInt(req.body.cedula), id: req.body.id }).exec((err, response) => {
+        if (err) {
+            return console.log(err);
+        }
+        else {
+            if (response) {
+                Curso.findOne({ id: req.body.id }).exec((err, cursoEncontrado) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    else {
+                        Matricula.deleteOne({ cedula: parseInt(req.body.cedula), id: req.body.id }).exec((err, resp) => {
+                            if (err) {
+                                return console.log(err);
+                            }
+                            else {
+                                Matricula.find({ id: req.body.id }).exec((err, matriculasEncontradas) => {
+                                    if (err) {
+                                        return console.log(err);
+                                    }
+                                    else {
+                                        console.log('mencontradas' + matriculasEncontradas)
+                                        mE = new Array();
+                                        matriculasEncontradas.forEach(f => {
+                                            mE.push(f.cedula);
+                                        })
+                                        Usuario.find({}).exec((err, resC) => {
+                                            if (err) {
+                                                return console.log(err);
+                                            }
+                                            else {
+                                                console.log('userstodos' + resC)
+                                                res.render('desmatricular', {
+                                                    curso: cursoEncontrado,
+                                                    cedulaMatriculados: mE,
+                                                    usuarios: resC
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+            else {
+                res.render('coordinador3', {
+                    texto: 'El estudiante no se ecuentra matriculado.'
+                })
+            }
+        }
+    })
+
+    // res.render('desmatricular', {
+    //     cedula: req.body.cedula,
+    //     id: req.body.id
+    // });
 });
 
 app.get('/coordinador', (req, res) => {

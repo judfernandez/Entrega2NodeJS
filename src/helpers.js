@@ -36,35 +36,14 @@ hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono, tipo) => {
 
 });
 
-hbs.registerHelper('desmatricular', (cedula, id) => {
+hbs.registerHelper('desmatricular', (curso, cedulaMatriculados, usuarios) => {
+    
     let texto;
-    listaMatricula = require('./matricula.json');
-    let busqueda = listaMatricula.find(ver => ver.id == id && ver.cedula == cedula);
-    if (!busqueda) {
-        return "El estudiante no esta matriculado en ese curso"
-    } else {
-        listaMatricula.splice(listaMatricula.indexOf(busqueda), 1);
+    console.log(cedulaMatriculados)
+    console.log(usuarios)
 
-        let datos = JSON.stringify(listaMatricula);
-        let matriculadosCurso = [];
-        fs.writeFile('./src/matricula.json', datos, (err) => {
-            if (err) throw (err);
-            console.log("El archivo fue guardado exitosamente");
-        })
 
-        listaUsuarios = require('./usuarios.json');
-        let listaCedulas = listaMatricula.filter(ver => ver.id == id);
-
-        console.log(listaCedulas);
-
-        listaCedulas.forEach(ver => {
-            let encontrado = listaUsuarios.find(usr => usr.cedula == ver.cedula);
-            matriculadosCurso.push(encontrado);
-        });
-
-        console.log(matriculadosCurso);
-
-        texto = "<div class='table-responsive'> <table class='table table-hover'>\
+    texto = "<div class='table-responsive'> <table class='table table-hover'>\
                 <thead class='thead-dark text-center'>\
                 <th>CEDULA:</th>\
                 <th>NOMBRE:</th>\
@@ -73,27 +52,27 @@ hbs.registerHelper('desmatricular', (cedula, id) => {
                 </thead>\
                 <tbody>";
 
-        matriculadosCurso.forEach(cursos => {
-            let user = listaUsuarios.find(ver => ver.cedula == cursos.cedula);
-            console.log(user);
-            texto = (texto +
-                "<tr class='table-info text-center'>" +
-                '<td>' + user.cedula + '</td>' +
-                '<td>' + user.nombre + '</td>' +
-                '<td>' + user.correo + '</td>' +
-                '<td>' + user.telefono + '</td>' +
-                '</tr>');
+    cedulaMatriculados.forEach(matriculado => {
+        let user = usuarios.find(ver => ver.cedula == matriculado);
+        console.log(user);
+        texto = (texto +
+            "<tr class='table-info text-center'>" +
+            '<td>' + user.cedula + '</td>' +
+            '<td>' + user.nombre + '</td>' +
+            '<td>' + user.correo + '</td>' +
+            '<td>' + user.telefono + '</td>' +
+            '</tr>');
 
-        })
-        texto = (texto + "</tbody></table><br></div>");
 
-        return texto
-    }
+    })
+    texto = (texto + "</tbody></table><br></div>");
+
+    return texto
 });
 
 hbs.registerHelper('cerrar', (id) => {
 
-    let texto = ("<form action='/docenteasignado?id="+id+"' method='post'>" +
+    let texto = ("<form action='/docenteasignado?id=" + id + "' method='post'>" +
         "<p>Cedula:</p>" +
         "<input type='number' name='cedula' required>" +
         " <br>" +
