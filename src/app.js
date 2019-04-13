@@ -15,6 +15,11 @@ var listaUsuarios;
 
 
 
+if (!process.env.URLDB) {
+
+    process.env.URLDB = 'mongodb://localhost:27017/Cursos'
+
+}
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err) => {
     if (err) {
@@ -43,7 +48,7 @@ function actualizarUsuarios() {
                     telefono: 2222222,
                     tipo: 'coordinador'
                 })
-                usuario.save((err, res)=> {
+                usuario.save((err, res) => {
                     if (err) {
                         return console.log(err);
                     }
@@ -53,13 +58,13 @@ function actualizarUsuarios() {
                     }
                 })
             }
-            else{
+            else {
                 listaUsuarios = res;
                 console.log('se obtuvieron los usuarios');
                 console.log(listaUsuarios.length);
             }
-            
-            
+
+
         }
     })
 }
