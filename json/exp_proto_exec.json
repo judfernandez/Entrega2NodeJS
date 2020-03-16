@@ -1,0 +1,913 @@
+[{ 
+    "_id" : "5de8249daddbb26c40c53e30", 
+    "exp_proto_docu_id" : "5ddc26b6d318d5b298650f07", 
+    "date" : "2019-12-04T00:25:36.268+0000", 
+    "procedures" : [
+        {
+            "name" : "Lab procedure 1", 
+            "description" : "Lab procedure to record observed/measured values", 
+            "action" : "record", 
+            "type" : "laboratory-procedure", 
+            "inputs" : {
+                "ids": [
+                "5ddefc5e506b05e4b823acea", 
+                "5ddef1ebf71ff37470449b31", 
+                "5ddef2243c435e7e0f2a3732", 
+                "5ddef378101917ff12ae136b",
+                "5ddef3c8fa14b6a19cb032c9",
+                "5ddef472bf29f8f4aa0f315c",
+                "5ddef4c2d66b0ea1be7c2e93",
+                "5d99602280591a1cb40f32f0",
+                "5ddef97980213ee244d81956",
+                "5ddef94a91ccc3fcb56e65a8",
+                "5ddef52bed37d237e2a45f31",
+                "5ddef4e7ac81c8fb1187902a"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "outputs" : {"ids":[
+                "5de825dbeb4fae85c7e3e3d2"
+            ]}, 
+            "_id" : "5de828abfd7023ddf4effe7f"
+        },
+        {
+            "name" : "Lab procedure 1.1", 
+            "action" : "dispense", 
+            "type" : "laboratory-subprocedure", 
+            "inputs" : {"ids": [
+                "5ddefc5e506b05e4b823acea"
+            ]}, 
+            "outputs" : {}, 
+            "precedes" : "5de828abfd7023ddf4effe7f", 
+            "description" : "the soil was dispersed using a blender and distilled water: 100ml", 
+            "_id" : "5de82d119b5f06a82ac40b2f"
+        }, 
+        {
+            "name" : "Lab procedure 1.2", 
+            "description" : "Mixture of soil and distilled water inside the pycnometer. The funnel is used", 
+            "action" : "put", 
+            "type" : "laboratory-subprocedure", 
+            "inputs" : {"ids":[
+                "5ddef4c2d66b0ea1be7c2e93", 
+                "5ddef1ebf71ff37470449b31"
+            ]}, 
+            "outputs" : {}, 
+            "precedes" : "5de82d119b5f06a82ac40b2f", 
+            "_id" : "5de82d1ef55196c20bbdac30"
+        }, 
+        {
+            "name" : "Lab procedure 1.3", 
+            "description" : "Water is added up to 1/3 of the depth of the pycnometer main body. The mixture was stirred. Adhered soil rinsed and added to the mixture.", 
+            "action" : "add water", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de82d1ef55196c20bbdac30", 
+            "inputs" : {"ids":[
+                "5ddef1ebf71ff37470449b31", 
+                "5ddef97980213ee244d81956"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5de82e017bf85caacf0ad591"
+        }, 
+        {
+            "name" : "Lab procedure 1.4", 
+            "description" : "The pycnometer air with the mixture is extracted using a vacuum pump.", 
+            "action" : "air extraction", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de82e017bf85caacf0ad591", 
+            "inputs" : {"ids":[
+                "5ddef2243c435e7e0f2a3732", 
+                "5ddef1ebf71ff37470449b31"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5de82f0f37ba3ea8705828b0"
+        }, 
+        {
+            "name" : "Lab procedure 1.5", 
+            "description" : "The mass of the pycnometer with soil and water is determined", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de82f0f37ba3ea8705828b0", 
+            "inputs" : {"ids":[
+                "5ddef3c8fa14b6a19cb032c9"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "PycnometerMassWb", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de8302daf874bc3209192f9"
+        },
+        {
+            "name" : "Lab procedure 1.6", 
+            "description" : "The temperature of the soil and water grout is determined", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de8302daf874bc3209192f9", 
+            "inputs" : {"ids":[
+                "5ddef472bf29f8f4aa0f315c"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Tx", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de8310285da7463a88f0243"
+        },
+        {
+            "name" : "Lab procedure 1.7", 
+            "description" : "An empty metal tare is weighed", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de8310285da7463a88f0243", 
+            "inputs" : {"ids":[
+                "5de83150825403d50f0fe18d"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MetalTareMass", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de8325d8deb8896c69841e4"
+        },
+        {
+            "name" : "Lab procedure 1.8", 
+            "description" : "The pycnometer mixture is transferred into the metal tare", 
+            "action" : "transfer mixture", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de8325d8deb8896c69841e4", 
+            "inputs" : {"ids":[
+                "5de83150825403d50f0fe18d"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5de832f34473ea38f01c2ce7"
+        },
+        {
+            "name" : "Lab procedure 1.9", 
+            "description" : "The metal tare mixture is dried in the oven at 110 ° C for 24 hours", 
+            "action" : "dry mixture", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de832f34473ea38f01c2ce7", 
+            "inputs" : {"ids":[
+                "5d99565f80591a1cb40f32c5"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5de83384f6ad449e8404caba"
+        },
+        {
+            "name" : "Lab procedure 1.10", 
+            "description" : "The dry mass of soil solids inside the metal tare is measured", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de83384f6ad449e8404caba", 
+            "inputs" : {"ids":[
+                "5ddef3c8fa14b6a19cb032c9"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MetalTareDrySoilMass,Ws", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de860368ddb3aa9fc4b5bea"
+        }, 
+        {
+            "name" : "Lab procedure 2", 
+            "description" : "Math Calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5de828abfd7023ddf4effe7f", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "PycnometerMassWb,Ws", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                },
+                {
+                    "dataset_vars" : "Wa", 
+                    "dataset_id" : "5de8628d188b11d272e2edd0"
+                }
+            ],
+                        "ids":[
+                            "5de7defd25cd1bcbfd243570",
+                            "5de81404b402a94835a9dfac"
+                        ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Gs", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de865601ef0ac653d8b16ea"
+        }, 
+        {
+            "name" : "Lab procedure 2.1", 
+            "description" : "Density correction factor is estimated and recorded", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de865601ef0ac653d8b16ea", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }], 
+                "ids":["5de81404b402a94835a9dfac"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "K", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "id" : "5de866fd874377801396556d"
+        },
+        {
+            "name" : "Lab procedure 2.2", 
+            "description" : "Density correction factor is estimated and recorded", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de866fd874377801396556d", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "PycnometerMassWb,Ws,K", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                },
+                {
+                    "dataset_vars" : "Wa", 
+                    "dataset_id" : "5de8628d188b11d272e2edd0"
+                }], 
+                "ids":["5de7defd25cd1bcbfd243570"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Gs", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "id" : "5de867b5be3b7838ef22bb56"
+        }]
+},
+{ 
+    "_id" : "5de94c019ab480ce955c05ff", 
+    "exp_proto_docu_id" : "5de93dbcafe2f6ae86713d81", 
+    "date" : "2019-12-04T00:25:36.268+0000", 
+    "procedures" : [
+        {
+            "name" : "Lab procedure 1", 
+            "description" : "laboratory procedure to measure and record observations", 
+            "action" : "record", 
+            "type" : "laboratory-procedure", 
+            "inputs" : {"ids":[
+                "5d99578880591a1cb40f32cd", 
+                "5d99565f80591a1cb40f32c5", 
+                "5de948bdf1c979f5a8eec6fa", 
+                "5de949571ef2200af86c6cd1", 
+                "5de9492c79c850ed569f57e4", 
+                "5d99602280591a1cb40f32f0",
+                "5dfa7173b552697d30f68720",
+                "5dfa7306474a5be0d7d7ff5d"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de986ba8609912141cfe145"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "_id" : "5dfa65efa6eef907cd20d373"
+        }, 
+        {
+            "name" : "Lab procedure 1.1", 
+            "description" : "5000g sample was taken and its initial weight recorded (Wo)", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dfa65efa6eef907cd20d373", 
+            "inputs" :{"ids": [
+                "5de949c629521cfc00363763"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "outputs" : {"ids": [
+                "5ddefc5e506b05e4b823acea",
+                "5de947f469cb3e77d93ac775",
+                "5de948070a575789ddd18d19"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "Wo", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "_id" : "5dfa67836ee163faa94d3a67"
+        }, 
+        {
+            "name" : "Lab procedure 1.2", 
+            "description" : "Specimens washing process", 
+            "action" : "wash", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dfa67836ee163faa94d3a67", 
+            "inputs" : {"ids":[
+                    "5ddefc5e506b05e4b823acea",
+                    "5de947f469cb3e77d93ac775",
+                    "5de948070a575789ddd18d19",
+                    "5de948bdf1c979f5a8eec6fa",
+                    "5de83150825403d50f0fe18d",
+                    "5d99565f80591a1cb40f32c5",
+                    "5dfa7173b552697d30f68720",
+                    "5dfa7306474a5be0d7d7ff5d"
+                ]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "WDryHovenSoilTare,Wtare,Wrx,PercentageFine", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "_id" : "5dfa7065805d74cee73ebf36"
+        }, 
+        {
+            "name" : "Lab procedure 1.2.1", 
+            "description" : "Speciemens soaking for one our. Breaking clumps by souaking", 
+            "action" : "soaking", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dfa7065805d74cee73ebf36", 
+            "inputs" : {"ids":[
+                "5ddefc5e506b05e4b823acea", 
+                "5de947f469cb3e77d93ac775",
+                "5de947f469cb3e77d93ac775",
+                "5de948070a575789ddd18d19"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5dfa74f7f1dbb1d63aa528d8"
+        }, 
+        {
+            "name" : "Lab procedure 1.2.2", 
+            "description" : "Washing soils specimens in sieve No. 200. ", 
+            "action" : "wash", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dfa74f7f1dbb1d63aa528d8", 
+            "inputs" : {"ids":[
+                "5de83150825403d50f0fe18d", 
+                "5dfa7306474a5be0d7d7ff5d"
+            ],
+            "dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Wtare", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }
+            ]}, 
+            "_id" : "5dfa75fb29b9400eeefc7ba9"
+        }, 
+        {
+            "name" : "Lab procedure 1.2.3", 
+            "description" : "Retained soil particles in sieve 200 are dried in oven for 24 hours and record values", 
+            "action" : "record", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5dfa75fb29b9400eeefc7ba9", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Wo,Wtare", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }], 
+                "ids":["5de83150825403d50f0fe18d", 
+                "5d99565f80591a1cb40f32c5"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_id" : "5de94b4e85c92e3a86547c80", 
+                    "dataset_vars" : "WDryHovenSoilTare,Wrx,PercentageFine"
+                }
+            ]}, 
+            "_id" : "5dfa782589283164ac893021"
+        },
+        {
+            "name" : "Lab procedure 1.3", 
+            "description" : "Sievening of the material retained in sieve No. 200 is performed using Ro-Tap", 
+            "action" : "sieve", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5dfa782589283164ac893021", 
+            "inputs" : { 
+                "ids":["5de948bdf1c979f5a8eec6fa", 
+                "5de9492c79c850ed569f57e4"]
+            }, 
+            "outputs" : {}, 
+            "_id" : "5dfa7b5e831c3a963fd4abf3"
+        },
+        {
+            "name" : "Lab procedure 1.4", 
+            "description" : "the mass of the fraction retained in each sieve is determined", 
+            "action" : "record,weight", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5dfa7b5e831c3a963fd4abf3", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }], 
+                "ids":["5d99578880591a1cb40f32cd"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_id" : "5de94b4e85c92e3a86547c80", 
+                    "dataset_vars" : "SieveNumber,Aperture,RetainedWeight,SieveRetainedWeight"
+                }
+            ]}, 
+            "_id" : "5dfa7de2e5d3414317014143"
+        },
+        {
+            "name" : "Lab procedure 2", 
+            "description" : "Math Calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5dfa65efa6eef907cd20d373", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Wo,SieveNumber,Aperture,RetainedWeight,SieveRetainedWeight", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_id" : "5de94b4e85c92e3a86547c80", 
+                    "dataset_vars" : "PercentageCalc,TotalPercentage"
+                }
+            ]}, 
+            "_id" : "5dfa82660544bbcbe8df20be"
+        },
+        {
+            "name" : "Lab procedure 2.1", 
+            "description" : "Math Calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5dfa82660544bbcbe8df20be", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Wo,SieveNumber,Aperture,RetainedWeight,SieveRetainedWeight", 
+                    "dataset_id" : "5de94b4e85c92e3a86547c80"
+                }]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_id" : "5de94b4e85c92e3a86547c80", 
+                    "dataset_vars" : "PercentageCalc,TotalPercentage"
+                }
+            ]}, 
+            "_id" : "5dfa85916e31b1a389662af3"
+        }
+    ]
+},
+{ 
+    "_id" : "5d99313b80591a1cb40f3230", 
+    "exp_proto_docu_id" : "5d8ea115309a6e48711f9850", 
+    "date" : "2019-10-06T00:25:36.268+0000", 
+    "procedures" : [
+        {
+            "name" : "Lab procedure 10", 
+            "description" : "Lab procedure to record observed/measured values", 
+            "action" : "record", 
+            "type" : "laboratory-procedure", 
+            "inputs" : {
+                "ids": [
+                "5d994f9580591a1cb40f32ad", 
+                "5d99546780591a1cb40f32c0", 
+                "5d99612980591a1cb40f32f1", 
+                "5d996f1a80591a1cb40f3352"
+            ]}, 
+            "outputs" : {"ids":[
+                "5d99703880591a1cb40f3358"
+            ]}, 
+            "_id" : "5d9938ed80591a1cb40f3241"
+        }
+,
+        {
+            "name" : "Lab procedure 10.1", 
+            "action" : "record", 
+            "type" : "laboratory-suprocedure", 
+            "inputs" : {"ids": [
+                "5d99578880591a1cb40f32cd", 
+                "5d99581280591a1cb40f32d8"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "precedes" : "5d9938ed80591a1cb40f3241", 
+            "description" : "Mass of the clean and dry specimen container and its lid was determined", 
+            "_id" : "5dae6b2cf4a98710a0a1733f"
+        }, 
+        {
+            "name" : "Lab procedure 10.2", 
+            "description" : "Selection of tests specimen", 
+            "action" : "selection", 
+            "type" : "laboratory-subprocedure", 
+            "inputs" : {"ids":[
+                "5d99513680591a1cb40f32b1", 
+                "5d99524480591a1cb40f32b7", 
+                "5d99534d80591a1cb40f32bc", 
+                "5d9953ac80591a1cb40f32bf"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContLidNumber", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "precedes" : "5dae6b2cf4a98710a0a1733f", 
+            "_id" : "5dae7170f4a98710a0a17368"
+        }, 
+        {
+            "name" : "Lab procedure 10.3", 
+            "description" : "Mass of specimen in container was determined", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dae7170f4a98710a0a17368", 
+            "inputs" : {"ids":[
+                "5d99513680591a1cb40f32b1", 
+                "5d99524480591a1cb40f32b7", 
+                "5d99534d80591a1cb40f32bc", 
+                "5d9953ac80591a1cb40f32bf", 
+                "5d99578880591a1cb40f32cd", 
+                "5d99581280591a1cb40f32d8"
+            ]}, 
+            "outputs" : {"dets":[
+                {
+                    "dataset_vars" : "ContMoistSpecMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "_id" : "5dae746ff4a98710a0a17387"
+        }, 
+        {
+            "name" : "Lab procedure 10.4", 
+            "description" : "Specimen in container without lid in oven", 
+            "action" : "dry", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dae7170f4a98710a0a17368", 
+            "inputs" : {"ids":[
+                "5d99565f80591a1cb40f32c5", 
+                "5d99513680591a1cb40f32b1", 
+                "5d99524480591a1cb40f32b7", 
+                "5d9953ac80591a1cb40f32bf"
+            ]}, 
+            "outputs" : {}, 
+            "_id" : "5dae76fef4a98710a0a173a3"
+        }, 
+        {
+            "name" : "Lab procedure 10.5", 
+            "description" : "Mass of the container and oven-dried specimen was recorded", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dae76fef4a98710a0a173a3", 
+            "inputs" : {"ids":[
+                "5d99513680591a1cb40f32b1", 
+                "5d99524480591a1cb40f32b7", 
+                "5d99534d80591a1cb40f32bc", 
+                "5d9953ac80591a1cb40f32bf", 
+                "5d99578880591a1cb40f32cd"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContainerOvenDrySpecimenMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "_id" : "5dae7a01f4a98710a0a173b9"
+        }, 
+        {
+            "name" : "Lab procedure 11", 
+            "description" : "calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5d9938ed80591a1cb40f3241", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContMass,ContMoistSpecMass,ContainerOvenDrySpecimenMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ],
+                        "ids":[
+                            "5d99650280591a1cb40f3313"
+                        ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MassOfWater,MassOfSolids,WaterContent", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "_id" : "5dae7e1cf4a98710a0a173f5"
+        }, 
+        {
+            "name" : "Lab procedure 11.1", 
+            "description" : "Water calculation", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dae7e1cf4a98710a0a173f5", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContMass,ContMoistSpecMass,ContainerOvenDrySpecimenMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }], 
+                "ids":["5d99650280591a1cb40f3313"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MassOfWater,MassOfSolids,WaterContent", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "id" : "5dae7f03f4a98710a0a173ff"
+        }]
+},
+{ 
+    "_id" : "5daf2b0b4590d43e3b5947c8", 
+    "exp_proto_docu_id" : "5d8ea115309a6e48711f9850", 
+    "date" : "2019-10-22T16:15:59.615+0000", 
+    "procedures" : [
+        {
+            "name" : "Lab procedure 1", 
+            "description" : "Lab procedure to record observed/measured values", 
+            "action" : "record", 
+            "type" : "laboratory-procedure", 
+            "inputs" : {"ids":[
+                "5d99578880591a1cb40f32cd", 
+                "5d99565f80591a1cb40f32c5", 
+                "5d99581280591a1cb40f32d8", 
+                "5d99602280591a1cb40f32f0", 
+                "5d9963ee80591a1cb40f32fd", 
+                "5d99703880591a1cb40f3358"
+            ]}, 
+            "outputs" : {"ids":[
+                "5daf302c4590d43e3b5947ed"
+            ]}, 
+            "_id" : "5daf2c354590d43e3b5947ce"
+        }, 
+        {
+            "name" : "Lab procedure 1.1", 
+            "description" : "Record sample diameter and height (three measures", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5daf2c354590d43e3b5947ce", 
+            "inputs" :{"ids": [
+                "5daf387f4590d43e3b59481f", 
+                "5d9963ee80591a1cb40f32fd"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SampleId,SampleDiameter,SampleHeight", 
+                    "dataset_id" : "5daf302c4590d43e3b5947ed"
+                }
+            ]}, 
+            "_id" : "5daf31a24590d43e3b5947f6"
+        }, 
+        {
+            "name" : "Lab procedure 1.2", 
+            "description" : "Calculation of sample volume", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5daf31a24590d43e3b5947f6", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SampleId,SampleDiameter,SampleHeight", 
+                    "dataset_id" : "5daf302c4590d43e3b5947ed"
+                }], 
+                "ids":["5daf36184590d43e3b594815"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SampleVolume", 
+                    "dataset_id" : "5daf302c4590d43e3b5947ed"
+                }
+            ]}, 
+            "_id" : "5daf3a024590d43e3b59483d"
+        }, 
+        {
+            "name" : "Lab procedure 1.3", 
+            "description" : "Record the weight of wet soil sample", 
+            "action" : "record", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5daf3a024590d43e3b59483d", 
+            "inputs" : {"ids":[
+                "5d9963ee80591a1cb40f32fd", 
+                "5d99578880591a1cb40f32cd"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SampleWeight", 
+                    "dataset_id" : "5dafb5c6ae3f627627b9d2b2"
+                }
+            ]}, 
+            "_id" : "5daf3b854590d43e3b594861"
+        }, 
+        {
+            "name" : "Lab procedure 1.4", 
+            "description" : "Split the soil sample in three specimens and calculate water content of specimens", 
+            "action" : "split", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5daf3b854590d43e3b594861", 
+            "inputs" : {"ids":[
+                "5d9963ee80591a1cb40f32fd", 
+                "5d99703880591a1cb40f3358"
+            ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SpecimenId,WaterContent", 
+                    "dataset_id" : "5daf302c4590d43e3b5947ed"
+                }
+            ]}, 
+            "_id" : "5dafb62aae3f627627b9d2b4"
+        }, 
+        {
+            "name" : "calculations", 
+            "description" : "Calculations of wet  and dry soil unitary weight", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5daf2c354590d43e3b5947ce", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "SpecimenId,WaterContent,SampleWeight,SampleVolume", 
+                    "dataset_id" : "5daf302c4590d43e3b5947ed"
+                }], 
+                "ids":["5daf34a74590d43e3b59480b", 
+                "5db06d25ae3f627627b9d350"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_id" : "5daf302c4590d43e3b5947ed", 
+                    "dataset_vars" : "WetSoilUnitWeight,DrySoilUnitWeight"
+                }
+            ]}, 
+            "_id" : "5dafb9e1ae3f627627b9d2e0"
+        }
+    ]
+},
+{
+    "_id" : "5d99313b80591a1cb40f3231",
+    "exp_proto_docu_id" : "5d8ea115309a6e48711f9850",
+    "date" : "2019-10-06T00:25:36.268+0000",
+    "procedures" : [
+        {
+            "name" : "Lab procedure 2", 
+            "description" : "Math Calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5de828abfd7023ddf4effe7f", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "PycnometerMassWb,Ws", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                },
+                {
+                    "dataset_vars" : "Wa", 
+                    "dataset_id" : "5de8628d188b11d272e2edd0"
+                }
+            ],
+                        "ids":[
+                            "5de7defd25cd1bcbfd243570",
+                            "5de81404b402a94835a9dfac"
+                        ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Gs", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "_id" : "5de865601ef0ac653d8b16ea"
+        }, 
+        {
+            "name" : "Lab procedure 2.1", 
+            "description" : "Density correction factor is estimated and recorded", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de865601ef0ac653d8b16ea", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }], 
+                "ids":["5de81404b402a94835a9dfac"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "K", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "id" : "5de866fd874377801396556d"
+        },
+        {
+            "name" : "Lab procedure 2.2", 
+            "description" : "Density correction factor is estimated and recorded", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5de866fd874377801396556d", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "PycnometerMassWb,Ws,K", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                },
+                {
+                    "dataset_vars" : "Wa", 
+                    "dataset_id" : "5de8628d188b11d272e2edd0"
+                }], 
+                "ids":["5de7defd25cd1bcbfd243570"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "Gs", 
+                    "dataset_id" : "5de825dbeb4fae85c7e3e3d2"
+                }
+            ]}, 
+            "id" : "5de867b5be3b7838ef22bb56"
+        },
+        {
+            "name" : "Lab procedure 11", 
+            "description" : "calculations", 
+            "action" : "calculate", 
+            "type" : "laboratory-procedure", 
+            "precedes" : "5d9938ed80591a1cb40f3241", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContMass,ContMoistSpecMass,ContainerOvenDrySpecimenMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ],
+                        "ids":[
+                            "5d99650280591a1cb40f3313"
+                        ]}, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MassOfWater,MassOfSolids,WaterContent", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "_id" : "5dae7e1cf4a98710a0a173f5"
+        }, 
+        {
+            "name" : "Lab procedure 11.1", 
+            "description" : "Water calculation", 
+            "action" : "calculate", 
+            "type" : "laboratory-subprocedure", 
+            "precedes" : "5dae7e1cf4a98710a0a173f5", 
+            "inputs" : {"dsets":[
+                {
+                    "dataset_vars" : "ContMass,ContMoistSpecMass,ContainerOvenDrySpecimenMass", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }], 
+                "ids":["5d99650280591a1cb40f3313"]
+            }, 
+            "outputs" : {"dsets":[
+                {
+                    "dataset_vars" : "MassOfWater,MassOfSolids,WaterContent", 
+                    "dataset_id" : "5d99703880591a1cb40f3358"
+                }
+            ]}, 
+            "id" : "5dae7f03f4a98710a0a173ff"
+        }
+    ]
+}]

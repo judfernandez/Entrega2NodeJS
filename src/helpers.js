@@ -1,39 +1,362 @@
 const hbs = require('hbs');
 const fs = require('fs');
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 
 hbs.registerHelper('obtenerPromedio', (nota1, nota2, nota3) => {
     return (nota1 + nota2 + nota3) / 3
 });
 //nel perro -20
-hbs.registerHelper('actualizar', (cedula, nombre, correo, telefono, tipo) => {
-    listaUsuarios = require('./usuarios.json');
-    console.log(cedula);
-    let busqueda = listaUsuarios.find(ver => ver.cedula == cedula);
-    console.log(busqueda);
-    if (busqueda) {
-        let usuario = {
-            nombre: nombre,
-            cedula: busqueda.cedula,
-            correo: correo,
-            telefono: telefono,
-            tipo: tipo
-        }
+hbs.registerHelper('execlist', (text) => {
+    return text;
 
-        listaUsuarios.splice(listaUsuarios.indexOf(busqueda));
-        listaUsuarios.push(usuario);
-        console.log(listaUsuarios);
+});
 
-        let datos = JSON.stringify(listaUsuarios);
-        fs.writeFile('./src/usuarios.json', datos, (err) => {
-            if (err) throw (err);
-            console.log('Archivo guardado con exito');
+hbs.registerHelper('doclist', (text) => {
+    return text;
+
+});
+
+hbs.registerHelper('display', (exec,doc,ios,auths,insts,projs,recommends) => {
+    
+    res = '<div id="General" class="tabcontent">' +
+    '<h3>General</h3>' +
+    '<p><b>'+ doc.title+'</b></p>' +
+    '<p><b>Time and Date:</b> '+ doc.date+'</p>' +
+    '<p><b>Description:</b> '+ doc.description+'</p>' +
+    '<p><b>Output Description:</b> ' + doc.output_description + '</p>'+
+    '<p><b>Test Location:</b> ' + doc.test_location + '</p>'+
+    '<p><b>Analyzed Properties:</b></p>' +
+    '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">'+
+    '<ul>';
+
+    doc.analyzed_properties.forEach(prop => {
+        res = res + '<li>' + prop + '</li>';
+    });
+
+    res = res + '</ul></div>';
+
+    res = res + '<p><b>Keywords:</b></p>' +
+    '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">'+
+    '<ul>';
+
+    doc.keywords.forEach(prop => {
+        res = res + '<li>' + prop + '</li>';
+    });
+
+    res = res + '</ul></div>';
+
+    res = res + '<p><b>Materials:</b></p>' +
+    '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">'+
+    '<ul>';
+
+    doc.materials.forEach(mat => {
+        res = res + '<li>' + mat.description + '</li>';
+    });
+
+    res = res + '</ul></div>';
+
+    res = res + '<p><b>Documentation:</b></p>' +
+    '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">';
+
+    doc.document_section.forEach(mat => {
+        res = res + '<p><b>' + mat.type + ':</b></p>' +
+        '<ul>';
+        mat.corpus.forEach(corp => {
+            res = res + '<li>' + corp + '</li>';
         });
+        res = res + '</ul>';
+    });
 
-        return "El usuario se modifico exitosamente"
-    } else {
-        return "El usuario que ingreso no existe en la base de datos"
-    }
+    res = res + '</div>';
+
+    res = res + '</div>' +
+    '<div id="Procedure" class="tabcontent">' +
+    '<h3>Procedures</h3>';
+
+    const specs = ios.find(thing => thing.type == 'specimens');
+    const datasets = ios.find(thing => thing.type == 'datasets');
+    const matequip = ios.find(thing => thing.type == 'materials & equipments');
+    const samples = ios.find(thing => thing.type == 'samples');
+    const equations = ios.find(thing => thing.type == 'equations');
+    // const specid= [], dsetid= [], mequipid= [],samplesid= [],equationsid = [];
+    // specs.elements.forEach(thing => {
+    //     specid.push(thing._id);
+    // });
+    // datasets.elements.forEach(thing => {
+    //     dsetid.push(thing._id);
+    // });
+    // matequip.elements.forEach(thing => {
+    //     mequipid.push(thing._id);
+    // });
+    // samples.elements.forEach(thing => {
+    //     samplesid.push(thing._id);
+    // });
+    // equations.elements.forEach(thing => {
+    //     equationsid.push(thing._id);
+    // });
+
+    exec.procedures.forEach(procedure =>{
+        res = res + '<hr>' +
+        '<p>' + procedure.name + 
+        '<form action="/index" method="POST">'+
+        '<input type="hidden" value="' + exec._id + '" name="id">' +
+        '<input type="hidden" value="' + procedure._id + '" name="likeid">' +
+        '<input type="hidden" value=1 name="like">' +
+        '<input type="hidden" value=2 name="type">' +
+        '<button class="btn btn-dark">Like</button><br>' +
+        '</form></p>' +
+        '<p>Inputs:</p>' +
+        '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">';
+        
+        var description = '';
+        var label = '';
+        var found = false;
+        var name = '';
+        var conditions= '';
+
+        if(procedure.inputs){
+        if (procedure.inputs.ids){
+            var i = 1;
+            procedure.inputs.ids.forEach(input =>{
+                // console.log(typeof(input));
+                specs.elements.forEach(thing =>{
+                    // console.log(typeof(thing._id))
+                    if (thing._id == input){
+                        description = thing.description;
+                        label = 'Label: ' + thing.label;
+                        found = true;
+                    }
+                });
+
+                if(!found){
+                    datasets.elements.forEach(thing =>{
+                        if(String(thing._id) == input){
+                            description = thing.name;
+                            label = 'Description: ' + thing.description;
+                            found= true;
+                        }
+                    })
+                }
+                
+                if(!found){
+                    matequip.elements.forEach(thing =>{
+                        if(thing._id == input){
+                            description = thing.name;
+                            label = thing.description;
+                            found = true;
+                        }
+                    });
+                }
+
+                if(!found){
+                    samples.elements.forEach(thing=>{
+                        if(thing._id == input){
+                            description = thing.description;
+                            label = "Label " + thing.label;
+                            conditions = 'Conditions: ' + thing.conditions;
+                            found = true;
+                        }
+                    });
+                }
+
+                if (!found){
+                    equations.elements.forEach(thing=>{
+                        if(thing._id == input){
+                            description = thing.name;
+                            label = 'Latex: ' + thing.latex;
+                            found = true;
+                        }
+                    });
+                }
+
+                res = res + '<p>Input ' + i + ': ' + description + '</p>' + 
+                '<p>' + name + '</p>' + 
+                '<p>' + conditions + '</p>' +
+                '<p>' + label +
+                '<form action="/index" method="POST">'+
+                '<input type="hidden" value="' + exec._id + '" name="id">' +
+                '<input type="hidden" value="' + input + '" name="likeid">' +
+                '<input type="hidden" value=1 name="like">' +
+                '<input type="hidden" value=3 name="type">' +
+                '<button class="btn btn-dark">Like</button><br>' +
+                '</form></p>';
+                // console.log(specs.elements.includes(input));
+                // console.log(datasets.elements.includes(input));
+                // console.log(matequip.elements.includes(input));
+                // console.log(samples.elements.includes(input));
+                // console.log(equations.elements.includes(input));
+                found = false;
+                i = i+1;
+                description = '';
+                label = '';
+                name = '';
+                conditions= '';
+            });
+        }}
+
+        res = res + '</div>';
+        res = res + '<p>Outputs:</p>' +
+        '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">';
+        
+        if(procedure.outputs){
+        if (procedure.outputs.ids){
+            var i = 1;
+            procedure.outputs.ids.forEach(output =>{
+
+                specs.elements.forEach(thing =>{
+                    if (thing._id == output){
+                        description = thing.description;
+                        label = 'Label: ' + thing.label;
+                        found = true;
+                    }
+                });
+
+                if(!found){
+                    datasets.elements.forEach(thing =>{
+                        if(thing._id == output){
+                            description = thing.name;
+                            label = 'Description: ' + thing.description;
+                            found= true;
+                        }
+                    })
+                }
+                
+                if(!found){
+                    matequip.elements.forEach(thing =>{
+                        if(thing._id == output){
+                            description = thing.name;
+                            label = thing.description;
+                            found = true;
+                        }
+                    });
+                }
+
+                if(!found){
+                    samples.elements.forEach(thing=>{
+                        if(thing._id == output){
+                            description = thing.description;
+                            label = "Label " + thing.label;
+                            conditions = 'Conditions: ' + thing.conditions;
+                            found = true;
+                        }
+                    });
+                }
+
+                if (!found){
+                    equations.elements.forEach(thing=>{
+                        if(thing._id == output){
+                            description = thing.name;
+                            label = 'Latex: ' + thing.latex;
+                            found = true;
+                        }
+                    });
+                }
+                
+                res = res + '<p>Output ' + i + ': ' + description + '</p>' + 
+                '<p>' + name + '</p>' + 
+                '<p>' + conditions + '</p>' +
+                '<p>' + label + 
+                '<form action="/index" method="POST">'+
+                '<input type="hidden" value="' + exec._id + '" name="id">' +
+                '<input type="hidden" value="' + output + '" name="likeid">' +
+                '<input type="hidden" value=1 name="like">' +
+                '<input type="hidden" value=3 name="type">' +
+                '<button class="btn btn-dark">Like</button><br>' +
+                '</form></p>';
+                found = false;
+                i = i+1;
+                description = '';
+                label = '';
+                name = '';
+                onditions= '';
+            });
+        }}
+        res = res + '</div>';
+    });
+
+    res = res + '</div><div id="Social" class="tabcontent">' +
+    '<h3>Authors</h3>';
+    doc.authors.forEach(author =>{
+        let auname = 'not found';
+        auths.forEach(x => {
+
+            if (String(x._id) == String(author.author_id)){
+                auname = x.name;
+                console.log(x.name);
+                
+            }
+        });
+        res = res + '<p> Author: ' + auname + '</p>' +
+        '<p>Role: ' + author.role + 
+        '<form action="/index" method="POST">'+
+        '<input type="hidden" value="' + exec._id + '" name="id">' +
+        '<input type="hidden" value="' + author.author_id + '" name="likeid">' +
+        '<input type="hidden" value=1 name="like">' +
+        '<input type="hidden" value=1 name="type">' +
+        '<button class="btn btn-dark">Like</button><br>' +
+        '</form></p>';
+    });
+    doc.institution.forEach(inst =>{
+        let instname = 'not found';
+        insts.forEach(x => {
+            if(String(x._id) == String(inst.institution_id)){
+                instname = x.name
+            }
+        })
+        res = res + '<p> Institution : ' + instname +
+        '<form action="/index" method="POST">'+
+        '<input type="hidden" value="' + exec._id + '" name="id">' +
+        '<input type="hidden" value="' + inst.institution_id + '" name="likeid">' +
+        '<input type="hidden" value=1 name="like">' +
+        '<input type="hidden" value=4 name="type">' +
+        '<button class="btn btn-dark">Like</button><br>' +
+        '</form></p>';
+    });
+    doc.project.forEach(proj =>{
+        let projname = 'not found';
+        projs.forEach(x=>{
+            console.log(x._id);
+            console.log(proj.project_id);
+            if(String(x._id)==String(proj.project_id)){
+                projname = x.name;
+            }
+        });
+        res = res + '<p> Project :' + projname +
+        '<form action="/index" method="POST">'+
+        '<input type="hidden" value="' + exec._id + '" name="id">' +
+        '<input type="hidden" value="' + proj.project_id + '" name="likeid">' +
+        '<input type="hidden" value=1 name="like">' +
+        '<input type="hidden" value=5 name="type">' +
+        '<button class="btn btn-dark">Like</button><br>' +
+        '</form></p>';
+    });
+
+    res = res + '</div><div id="Recomendaciones" class="tabcontent">' +
+    '<h3>Recomendaciones</h3>' +
+    '<div class="container text-center" style="border-width: 1px;border: solid; border-color: black">'+
+    '<p>Content</p>';
+
+    recommends.forEach(reco =>{
+        res = res + '<p>' + reco + '</p>'
+    })
+
+    res = res + '</div></div>';
+
+    res = res +
+    '<form action="/index" method="POST">'+
+    '<input type="hidden" value="' + exec._id + '" name="id">' +
+    '<input type="hidden" value="' + exec._id + '" name="likeid">' +
+    '<input type="hidden" value=1 name="like">' +
+    '<input type="hidden" value=0 name="type">' +
+    '<button class="btn btn-dark">Like</button><br>' +
+    '</form>';
+
+
+
+    return res;
+
 
 });
 

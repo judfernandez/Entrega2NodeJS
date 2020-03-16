@@ -1,0 +1,511 @@
+[{ 
+    "_id" : "5d994f9580591a1cb40f32ad", 
+    "type" : "specimens", 
+    "elements" : [
+        {
+            "description" : "Soil tube specimen", 
+            "label" : "S-51", 
+            "_id" : "5d99513680591a1cb40f32b1"
+        }, 
+        {
+            "description" : "Soil tube specimen", 
+            "label" : "S-52", 
+            "_id" : "5d99524480591a1cb40f32b7"
+        }, 
+        {
+            "description" : "Soil tube specimen", 
+            "label" : "S-53", 
+            "_id" : "5d99534d80591a1cb40f32bc"
+        }, 
+        {
+            "description" : "Soil tube specimen", 
+            "label" : "S-10", 
+            "_id" : "5d9953ac80591a1cb40f32bf"
+        },
+        {
+            "description" : "Dry soil specimen", 
+            "label" : "S-46", 
+            "_id" : "5de947f469cb3e77d93ac775"
+        },
+        {
+            "description" : "Dry soil specimen", 
+            "label" : "S-48", 
+            "_id" : "5de948070a575789ddd18d19"
+        }
+
+    ], 
+    "sample" : "5d99612980591a1cb40f32f1"
+},
+{ 
+    "_id" : "5d99546780591a1cb40f32c0", 
+    "type" : "materials & equipments", 
+    "elements" : [
+        {
+            "name" : "Drying Oven", 
+            "description" : "Vented, thermostatically-controlled. capable of maintaining a uniform temperature of 110°C +/- 5°C throughout the drying chamber.", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "oven", 
+            "_id" : "5d99565f80591a1cb40f32c5"
+        }, 
+        {
+            "name" : "Balance", 
+            "description" : "Class GP2 balance of 0.1g readability for specimens having a mass over 200g. ", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "Balance,GP2", 
+            "_id" : "5d99578880591a1cb40f32cd"
+        }, 
+        {
+            "name" : "Specimen Containers", 
+            "description" : "Suitable containers made of material resistant to corrosion and change in mass upon repeated heating, cooling, exposure to materials of varying pH, and cleaning.", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "Specimen Containers, Container", 
+            "_id" : "5d99581280591a1cb40f32d8"
+        }, 
+        {
+            "name" : "Desiccator", 
+            "description" : "(Optional A desiccator cabinet or large desiccator jar of suitable size containing silica gel or anhydrous calcium sulfate", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "Dissecator", 
+            "_id" : "5d99593580591a1cb40f32e0"
+        }, 
+        {
+            "name" : "Container Handling Apparatus", 
+            "description" : "Heat resistant gloves, tongs. Suitable holder for moving and handling hot containers after drying", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "Gloves, Holder", 
+            "_id" : "5d995afc80591a1cb40f32e8"
+        }, 
+        {
+            "name" : "Miscellaneous", 
+            "description" : "Knives, spatulas, scoops, quartering, cloth, wire saws, etc", 
+            "manufacturer" : "", 
+            "catalog number" : "", 
+            "tags" : "Miscellaneous, Knives, spatulas ", 
+            "_id" : "5d99602280591a1cb40f32f0"
+        }, 
+        {
+            "name" : "Caliper", 
+            "description" : "Vernier caliper", 
+            "catalog_number" : "", 
+            "_id" : "5daf387f4590d43e3b59481f"
+        },
+        {
+            "name" : "Pyconmeter", 
+            "description" : "500ml capacity", 
+            "catalog_number" : "",
+            "tags": "Picnometer", 
+            "_id" : "5ddef1ebf71ff37470449b31"
+        },
+        {
+            "name" : "Vacum Pump", 
+            "description" : "Partial Vacum 100mm/Hg",
+            "manufacturer" : "Sartorius",
+            "catalog_number" : "1669416006",
+            "tags": "Vacum Pump", 
+            "_id" : "5ddef2243c435e7e0f2a3732"
+        },
+        {
+            "name" : "Bunsen Burner", 
+            "description" : "",
+            "manufacturer" : "Sigma-Aldrich",
+            "catalog_number" : "",
+            "tags": "Burner", 
+            "_id" : "5ddef378101917ff12ae136b"
+        },
+        {
+            "name" : "Balance", 
+            "description" : "8000g capacity, readibility 0,1g",
+            "manufacturer" : "Abbatron / HH Smith",
+            "catalog_number" : "8000G",
+            "tags": "Balance,8000G", 
+            "_id" : "5ddef3c8fa14b6a19cb032c9"
+        },
+        {
+            "name" : "Thermometer", 
+            "description" : "Precision, Range -8 +32C Div0.1C",
+            "manufacturer" : "Paragon Scientific Ltd",
+            "catalog_number" : "",
+            "tags": "Thermometer", 
+            "_id" : "5ddef472bf29f8f4aa0f315c"
+        },
+        {
+            "name" : "Funnel", 
+            "description" : "Funnel",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "Funnel", 
+            "_id" : "5ddef4c2d66b0ea1be7c2e93"
+        },
+        {
+            "name" : "Sieve", 
+            "description" : "Sieve 4,75mm (No.4)",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "Sieve", 
+            "_id" : "5ddef4e7ac81c8fb1187902a"
+        },
+        {
+            "name" : "Plastic Recipient", 
+            "description" : "Plastic Recipient with 1cm diameter hose",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "", 
+            "_id" : "5ddef52bed37d237e2a45f31"
+        },
+        {
+            "name" : "Refrigerator", 
+            "description" : "Refrigerator",
+            "manufacturer" : "ESCO",
+            "catalog_number" : "HR1-140S-2",
+            "tags": "", 
+            "_id" : "5ddef94a91ccc3fcb56e65a8"
+        },
+        {
+            "name" : "Distilled Water", 
+            "description" : "Distilled Water",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "", 
+            "_id" : "5ddef97980213ee244d81956"
+        },
+        {
+            "name" : "Metal tare", 
+            "description" : "Metal tare",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "", 
+            "_id" : "5de83150825403d50f0fe18d"
+        },
+        {
+            "name" : "Standard Sieve Set", 
+            "description" : "Standard Sieve Designation in Accordance with ASTM E11",
+            "manufacturer" : "Gilson Company Inc",
+            "catalog_number" : "",
+            "tags": "Sieve Sets", 
+            "_id" : "5de948bdf1c979f5a8eec6fa"
+        },
+        {
+            "name" : "Ro-Tap", 
+            "description" : "Ro-Tap",
+            "manufacturer" : "SMAT Minerals",
+            "catalog_number" : "",
+            "tags": "Ro-Tap", 
+            "_id" : "5de9492c79c850ed569f57e4"
+        },
+        {
+            "name" : "metal container", 
+            "description" : "metal container for storing retained particles in each sieve",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "sieve metal container", 
+            "_id" : "5de949571ef2200af86c6cd1"
+        },
+        {
+            "name" : "Plastic recipient ", 
+            "description" : "Plastic recipient for soil soaking",
+            "manufacturer" : "",
+            "catalog_number" : "",
+            "tags": "Plastic, soil soaiking", 
+            "_id" : "5dfa7173b552697d30f68720"
+        },
+        {
+            "name" : "Sieve No. 200", 
+            "description" : "Sieve No. 200",
+            "manufacturer" : "Gilson Company Inc",
+            "catalog_number" : "",
+            "tags": "Sieve, 200", 
+            "_id" : "5dfa7306474a5be0d7d7ff5d"
+        }
+    ]
+},
+{ 
+    "_id" : "5d99612980591a1cb40f32f1", 
+    "type" : "samples", 
+    "elements" : [
+        {
+            "description" : "Wet soil sample in shelby tube container", 
+            "conditions" : "Wet soil", 
+            "label" : "SSProjectA-01", 
+            "_id" : "5d9963ee80591a1cb40f32fd", 
+            "id_material" : "5d99644380591a1cb40f32ff"
+        }, 
+        {
+            "description" : "Wet soil sample in shelby tube container", 
+            "label" : "ST01", 
+            "conditions" : "wet soil, sealed shelby tube", 
+            "_id" : "5daf32a24590d43e3b5947fd", 
+            "id_material" : "5d99644380591a1cb40f32ff"
+        },
+        {
+            "description" : "Dry soil. Particle size smailler than 4,75mm", 
+            "conditions" : "Dry soil", 
+            "label" : "SSProjectB-01", 
+            "_id" : "5ddef9f9b1a1ed69ba45ce92", 
+            "id_material" : "5ddd6c2a7250fcaeaa554755"
+        }, 
+        {
+            "description" : "Dry soil for sieve analysis", 
+            "label" : "SSProjectB-02", 
+            "conditions" : "Air dry soil", 
+            "_id" : "5de949c629521cfc00363763", 
+            "id_material" : "5ddd6c2a7250fcaeaa554755"
+        }
+    ]
+},
+{ 
+    "_id" : "5d99650280591a1cb40f3313", 
+    "type" : "equations", 
+    "elements" : [
+        {
+            "name" : "Soil water content", 
+            "description" : "", 
+            "latex" : "w=[(M_{cms}-M_{cds}/(M_{cds}-M_{c}]\times100=(M_{w}/M_{s}\times100 ", 
+            "dep_var" : "w", 
+            "idependent_vars" : [
+                {
+                    "id" : "5d99666580591a1cb40f3317", 
+                    "description" : "Mass of container and moist specimen in gr", 
+                    "latex" : "M_{cms}", 
+                    "name" : "Mass of container and moist specimen"
+                }, 
+                {
+                    "id" : "5d996d2b80591a1cb40f332a", 
+                    "description" : "Mass of container and oven dry specimen in gr", 
+                    "latex" : "M_{cds}", 
+                    "name" : "Mass of container and oven dry specimen"
+                }, 
+                {
+                    "id" : "5d996db780591a1cb40f3336", 
+                    "description" : "Mass of container in gr", 
+                    "latex" : "M_{c}", 
+                    "name" : "Mass of container"
+                }, 
+                {
+                    "id" : "5d996e2f80591a1cb40f3340", 
+                    "description" : "Mas of water in g", 
+                    "latex" : "M_{w}=M_{cms}-M_{cds}", 
+                    "name" : "Mas of water"
+                }, 
+                {
+                    "id" : "5d996ea580591a1cb40f334b", 
+                    "description" : "Mass of oven dry specimen in g", 
+                    "latex" : "M_{s}=M_{cds}-M_{c}", 
+                    "name" : "Mass of oven dry specimen"
+                }
+            ], 
+            "_id" : "5d99657480591a1cb40f3315"
+        }, 
+        {
+            "name" : "Wet soil unitary weight", 
+            "description" : "", 
+            "latex" : "\\gamma h=\frac{W}{V}", 
+            "depvar" : "\\gamma h", 
+            "independent_vars" : [
+                {
+                    "name" : "Wet soil weight", 
+                    "description" : "Weight of the soil sample", 
+                    "latex" : "W", 
+                    "_id" : "5daf35444590d43e3b594812"
+                }, 
+                {
+                    "name" : "Soil sample volume", 
+                    "description" : "Voume of the soil sample. This sample  is stored in a shelby tube", 
+                    "latex" : "V=\\pi \frac{D_{2}}{4}\times h", 
+                    "_id" : "5daf36184590d43e3b594815"
+                }
+            ], 
+            "_id" : "5daf34a74590d43e3b59480b"
+        }, 
+        {
+            "_id" : "5db06d25ae3f627627b9d350", 
+            "name" : "Dry soil unitary weight", 
+            "description" : "", 
+            "latex" : "\\gamma d= \frac{\\gamma h}{(1+w}", 
+            "depvar" : "", 
+            "independent_vars" : [
+                {
+                    "_id" : "5db06dadae3f627627b9d352", 
+                    "name" : "Wet soil unitary weight", 
+                    "description" : "Wet soil unitary weight", 
+                    "latex" : "\\gamma d", 
+                    "id_eq" : "5daf34a74590d43e3b59480b"
+                }, 
+                {
+                    "_id" : "5db06e7eae3f627627b9d358", 
+                    "name" : "Soil water content", 
+                    "description" : "Soil water content", 
+                    "latex" : "w", 
+                    "id_eq" : "5d99657480591a1cb40f3315"
+                }
+            ]
+        },
+        {
+            "name" : "Specific Gravity", 
+            "description" : "Calculate with three sigificant figures", 
+            "latex" : "\\Gs_{20^{\\circ}C}=\\frac{W_{s}\\times K}{ W_{s}+ W_{b}- W_{a}}", 
+            "depvar" : "\\Gs_{20^{\\circ}C}", 
+            "independent_vars" : [
+                {
+                    "name" : "Picnometer mass + water + soilds (test temperature)", 
+                    "description" : "Picnometer mass + water + soilds (test temperature)", 
+                    "latex" : "\\W_{b}", 
+                    "_id" : "5de7e1824a7cb13348db40c9",
+                    "id_eq": "5de7defd25cd1bcbfd243570"
+                }, 
+                {
+                    "name" : "Dry soil mass (g)", 
+                    "description" : "Dry soil mass (g)", 
+                    "latex" : " \\W_{s}", 
+                    "_id" : "5de7e7998c8ad968ff733066",
+                    "id_eq": "5de7defd25cd1bcbfd243570"
+                },
+                {
+                    "name" : "Picnometer mass plus distililed water", 
+                    "description" : "Picnometer mass plus distililed water to calibration mark and test temperature", 
+                    "latex" : " \\W_{a}", 
+                    "_id" : "5de7e7cf8aa96e0384c33e8b",
+                    "id_eq": "5de7defd25cd1bcbfd243570"
+                },
+                {
+                    "name" : "Correction factor", 
+                    "description" : "Correction factor based on water density to 20°C. This value corresponds to table", 
+                    "latex" : " K", 
+                    "_id" : "5de7e88b727692755dee2504",
+                    "id_eq": "5de7defd25cd1bcbfd243570"
+                }
+            ], 
+            "_id" : "5de7defd25cd1bcbfd243570"
+        },
+        {
+            "_id" : "5de81404b402a94835a9dfac", 
+            "name" : "Density correction factor", 
+            "description" : "Correction factor based on water density to 20°C. This value corresponds to table", 
+            "latex" : "\\K=\\frac{\\delta_{W_{T_{x}}}}{\\delta_{W20^{\\circ}C}}", 
+            "depvar" : "K", 
+            "independent_vars" : [
+                {
+                    "_id" : "5de81663d6fddaa3eb1e9335", 
+                    "name" : "Water density", 
+                    "description" : "Water density to Tx (temprerature) g/ml acoording to table", 
+                    "latex" : "\\delta_{W_{T_{x}}}", 
+                    "id_eq" : "5de81404b402a94835a9dfac"
+                }, 
+                {
+                    "_id" : "5de816cecf2d0c36e53897fe", 
+                    "name" : "Water density 20°C", 
+                    "description" : "Water density to 20°C", 
+                    "latex" : "\\delta_{W20^{\\circ}C}", 
+                    "id_eq" : "5de81404b402a94835a9dfac"
+                }
+            ]
+        },
+        {
+            "_id" : "5de819c3ab45f2eed50aba47", 
+            "name" : "Pycnometer mass and water to temperature Tx", 
+            "description" : "Pycnometer mass and water to temperature Tx, g", 
+            "latex" : "Wa_{T_{X}}=\frac{\\delta_{W_{T_{x}}}}{\\delta_{W_{T_{i}}}}\times ({Wa_{T_{i}}} - W_{f})+W_{f}", 
+            "depvar" : "\\Wa_{T_{X}}", 
+            "independent_vars" : [
+                {
+                    "_id" : "5de81663d6fddaa3eb1e9335", 
+                    "name" : "Water density", 
+                    "description" : "Water density to Tx (temprerature) g/ml acoording to table", 
+                    "latex" : "\\delta_{W_{T_{x}}}", 
+                    "id_eq" : "5de819c3ab45f2eed50aba47"
+                }, 
+                {
+                    "_id" : "5de81b319a71d88ccb7e55f3", 
+                    "name" : "Water density calibration temperature", 
+                    "description" : "Water density to calibration temperature (g/ml)", 
+                    "latex" : "\\delta_{W_{T_{i}}}", 
+                    "id_eq" : "5de819c3ab45f2eed50aba47"
+                },
+                {
+                    "_id" : "5de81be6b141f816410858a2", 
+                    "name" : "Picnometer mass and water to calibration temperature, g", 
+                    "description" : "Picnometer mass and water to calibration temperature", 
+                    "latex" : "\\Wa_{T_{i}}", 
+                    "id_eq" : "5de819c3ab45f2eed50aba47"
+                },
+                {
+                    "_id" : "5de81c21ec72c9855993702f", 
+                    "name" : "Dry pycnometer mass, g", 
+                    "description" : "Dry picnometer mass", 
+                    "latex" : "W_{f}", 
+                    "id_eq" : "5de819c3ab45f2eed50aba47"
+                }
+            ]
+        },
+        {
+            "_id" : "5dfa83357f6cf0e65a77978f", 
+            "name" : "Retained percentage ", 
+            "description" : "Retained percentage weight in each sieve", 
+            "latex" : "RetPerSieve_i = \frac{Retained\\ Weight_{(i)}}{Wo}\times 100", 
+            "depvar" : "RetPerSieve_i", 
+            "independent_vars" : [
+                {
+                    "_id" : "5dfa835491cfa3b9bf45eb28", 
+                    "name" : "Retained weight in each sieve", 
+                    "description" : "Retained weight in each sieve", 
+                    "latex" : "\\frac{Retained\\ Weight_{(i)}}", 
+                    "id_eq" : "5dfa83357f6cf0e65a77978f"
+                }, 
+                {
+                    "_id" : "5dfa83b5b88e10bb6f6456e3", 
+                    "name" : "Initial Weight", 
+                    "description" : "Initial Weight", 
+                    "latex" : "Wo", 
+                    "id_eq" : "5dfa83357f6cf0e65a77978f"
+                }
+            ]
+        }
+    ]
+},
+{ 
+    "_id" : "5d996f1a80591a1cb40f3352", 
+    "type" : "datasets", 
+    "elements" : [
+        {
+            "name" : "Water_Content_Project_A.xlsx", 
+            "description" : "A dataset containing records of this protocol", 
+            "_id" : "5d99703880591a1cb40f3358", 
+            "dataset_vars" : "LabNumber,BoringNumber,FieldNumber,ContLidNumber,ContMass,ContMoistSpecMass,DateTimeInOven,DateTimeOutOven,ContainerOvenDrySpecimenMass,MassOfWater,MassOfSolids,WaterContent,SoilClass,MaxGrainSize,OtherOvenTemp,Remarks"
+        }, 
+        {
+            "name" : "Soil_Unit_Weight_Project_A.xlsx", 
+            "description" : "A dataset containing records of this protocol", 
+            "_id" : "5daf302c4590d43e3b5947ed", 
+            "dataset_vars" : "SpecimenId,SampleId,SampleDiameter,SampleHeight,SampleVolume,SampleWeight,WaterContent,WetSoilUnitWeight,DrySoilUnitWeight"
+        },
+        {
+            "name" : "Soils_Specific_Gravity_Project_B.xlsx", 
+            "description" : "Dataset with records and math calculations", 
+            "_id" : "5de825dbeb4fae85c7e3e3d2", 
+            "dataset_vars" : "SpecimenId,PycnometerMassWb,Tx,MetalTareMass,MetalTareDrySoilMass,Ws,K,Gs"
+        },
+        {
+            "name" : "Pycnometer_Calibration.xls", 
+            "description" : "Dataset with pycnometer calibration records", 
+            "_id" : "5de8628d188b11d272e2edd0", 
+            "dataset_vars" : "WaterDensityTx,WaterDensity20C,Tx,Wa"
+        },
+        {
+            "name" : "Particle-Size Distribution_Spoil_Specimen.xls", 
+            "description" : "Dataset with gradation of soils for specified specimens", 
+            "_id" : "5de94b4e85c92e3a86547c80", 
+            "dataset_vars" : "Wo,WDryHovenSoilTare,WTare,Wrx,PercentageFine,SieveNumber,Aperture,RetainedWeight,SieveRetainedWeight,PercentageCalc,TotalPercentage"
+        },
+        {
+            "name" : "Lab_BulkSample_Processing_Info.xls", 
+            "description" : "data set to record the characteristics of the sample for the sieve test", 
+            "_id" : "5de986ba8609912141cfe145", 
+            "dataset_vars" : ""
+        }
+    ]
+}
+]

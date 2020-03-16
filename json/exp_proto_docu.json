@@ -1,0 +1,303 @@
+[{ 
+    "_id" : "5de93dbcafe2f6ae86713d81", 
+    "title" : "Project B: sieve granulometric analysis", 
+    "description" : "In this laboratory test, the distribution by weight and percentage of the various particle sizes of the project's soil mass is determined. That as a legal and security requirement in the construction of housing of the type that addresses this project.", 
+    "test_location" : "laboratory", 
+    "analyzed_properties" : [
+        "weight", 
+        "percentage"
+    ], 
+    "knowledge_domains" : [
+        "soils"
+    ], 
+    "materials" : [
+        {
+            "description" : "soil,rock,agreggate", 
+            "astm_prefix" : "D", 
+            "_id" : "5ddd6c2a7250fcaeaa554755"
+        }
+    ], 
+    "keywords" : [
+        "soil", 
+        "Sieve Analysis", 
+        "ASTM D6913"
+    ], 
+    "version" : 1, 
+    "output_description" : "Spreadsheet report with sieve process records for every soil specimen", 
+    "purposes" : [
+        "determine the distribution by weight and percentage of the various particle sizes of the soil mass"
+    ], 
+    "authors" : [
+        {
+            "role" : "Researcher", 
+            "author_id" : "5ddd701071bbb09f2107672f"
+        }
+    ], 
+    "document_section" : [
+        {
+            "type" : "References", 
+            "corpus" : [
+                "ASTM E1109 - 19. Standard Test Method for Determining the Bulk Density of Solid Waste Fractions"
+            ], 
+            "_id" : "5de944012944954b0aed33a1"
+        },
+        {
+            "type" : "Scope", 
+            "corpus" : [
+                "Typically, if the maximum particle size is equal to orless than 4.75 mm (No. 4 sieve), then single-set sieving is applicable. Furthermore, if the maximum particle size isgreater than 4.75 mm (No. 4 sieve) and equal to or less than 9.5mm (3⁄8-in sieve), then either single-set sieving or compositesieving is applicable. Finally, if the maximum particle size isequal to or greater than 19.0 mm (3⁄4-in sieve), compositesieving is applicable."
+            ], 
+            "_id" : "5de943fb09cea11024279a38"
+        }
+    ], 
+    "method" : [
+        "cuantitative"
+    ], 
+    "techniques" : [
+        "sieving"
+    ], 
+    "date" : "2019-10-22T16:09:40.163+0002", 
+    "institution" : [
+        {
+            "institution_id" : "5ddd6ecdd9460c79871e10e3"
+        }
+    ], 
+    "project" : [
+        {
+            "project_id" : "5ddd6ff348f9def0b69559eb"
+        }
+    ]
+},
+{ 
+    "_id" : "5ddc26b6d318d5b298650f07", 
+    "title" : "Project B: Determination of the specific gravity of soils", 
+    "description" : "Laboratory test on the relationship of solids density and water density for soil specimens collected from project B. An urban development project of departments in the El Poblado area, in the city of Medellín", 
+    "test_location" : "laboratory", 
+    "analyzed_properties" : [
+        "specific gravity", 
+        "density"
+    ], 
+    "knowledge_domains" : [
+        "soils"
+    ], 
+    "materials" : [
+        {
+            "description" : "soil,rock,agreggate", 
+            "astm_prefix" : "D", 
+            "_id" : "5ddd6c2a7250fcaeaa554756"
+        }
+    ], 
+    "keywords" : [
+        "soil", 
+        "specific gravity", 
+        "ASTM D854 - 14",
+        "Pycnometer,Method A"
+    ], 
+    "version" : 1, 
+    "output_description" : "Spreadsheet with specific humidity records of selected soil specimens", 
+    "purposes" : [
+        "Determination of the specific gravity by picnometer"
+    ], 
+    "authors" : [
+        {
+            "role" : "Researcher", 
+            "author_id" : "5ddd6f0b87e76ee194b646e8"
+        }
+    ], 
+    "document_section" : [
+        {
+            "type" : "References", 
+            "corpus" : [
+                "C127 Test Method for Density, Relative Density (Specific Gravity), and Absorption of Coarse Aggregate",
+                "D653 Terminology Relating to Soil, Rock, and Contained Fluids",
+                "D2216 Test Methods for Laboratory Determination of Water (Moisture) Content of Soil and Rock by Mass",
+                "D2487 Practice for Classification of Soils for Engineering Purposes (Unified Soil Classification System)",
+                "D3740 Practice for Minimum Requirements for Agencies Engaged in Testing and/or Inspection of Soil and Rock as Used in Engineering Design and Construction",
+                "D4753 Guide for Evaluating, Selecting, and Specifying Balances and Standard Masses for Use in Soil, Rock, and Construction Materials Testing",
+                "D5550 Test Method for Specific Gravity of Soil Solids by Gas Pycnometer",
+                "D6026 Practice for Using Significant Digits in Geotechnical Data",
+                "E11 Specification for Woven Wire Test Sieve Cloth and Test Sieves",
+                "E177 Practice for Use of the Terms Precision and Bias in ASTM Test Methods",
+                "E691 Practice for Conducting an Interlaboratory Study to Determine the Precision of a Test Method"
+            ], 
+            "_id" : "5ddd6d5d478297912ccacb8d"
+        },
+        {
+            "type" : "Abstract", 
+            "corpus" : [
+                "These test methods cover the determination of the specific gravity of soil solids passing a sieve by means of a water pycnometer. Soil solids for these test methods do not include solids which can be altered by these methods, contaminated with a substance that prohibits the use of these methods, or are highly organic soil solids, such as fibrous matter which floats in water. Procedures for moist specimens such as organic soils, highly plastic fine grained soils, tropical soils, and soils containing halloysite and oven-dry specimens are provided. The apparatus is comprised of water pycnometer which shall be a stoppered flask, stoppered iodine flask, or volumetric flask; balance; drying oven; thermometer; dessicator; a system for entrapped air removal which shall be a hot plate or Bunsen burner or a vacuum pump or water aspirator; insulated container; non-corrosive smooth surface funnel; pycnometer filling tube with lateral vents; sieve; and blender with mixing blades. The specific gravity of the soil solids at the test temperature shall be calculated from the density of the soil solids and the density of water at the test temperature or from the mass of the oven dry soil solids; mass of pycnometer, water, and soil solids at the test temperature; and mass of the pycnometer and water at the test temperature. Precision and bias shall be determined to judge for the acceptability of the test results"
+            ], 
+            "_id" : "5ddd6d4a1e01ef7ba2060b93"
+        },
+        {
+            "type" : "Scope", 
+            "corpus" : [
+                "1.1 These test methods cover the determination of the specific gravity of soil solids that pass the 4.75-mm (No. 4) sieve, by means of a water pycnometer. When the soil contains particles larger than the 4.75-mm sieve, Test Method C127 shall be used for the soil solids retained on the 4.75-mm sieve and these test methods shall be used for the soil solids passing the 4.75-mm sieve., 1.1.1 Soil solids for these test methods do not include solids which can be altered by these methods, contaminated with a substance that prohibits the use of these methods, or are highly organic soil solids, such as fibrous matter which floats in water., 1.2 Two methods for performing the specific gravity are provided. The method to be used shall be specified by the requesting authority, except when testing the types of soils listed in 1.2.1, 1.2.1 Method A—Procedure for Moist Specimens, described in 9.2. This procedure is the preferred method. For organic soils; highly plastic, fine grained soils; tropical soils; and soils containing halloysite, Method A shall be used., 1.2.2 Method B—Procedure for Oven-Dry Specimens, described in 9.3., 1.3 All observed and calculated values shall conform to the guidelines for significant digits and rounding established in Practice D6026., 1.3.1 The procedures used to specify how data are collected/recorded and calculated in this standard are regarded as the industry standard. In addition, they are representative of the significant digits that generally should be retained. The procedures used do not consider material variation, purpose for obtaining the data, special purpose studies, or any considerations for the user's objectives; and it is common practice to increase or reduce significant digits of reported data to be commensurate with these considerations. It is beyond the scope of these test methods to consider significant digits used in analysis methods for engineering design., 1.4 The values stated in SI units are to be regarded as standard. The inch-pound units given in parentheses are mathematical conversions which are provided for information purposes only and are not considered standard., 1.5 This standard does not purport to address all of the safety concerns, if any, associated with its use. It is the responsibility of the user of this standard to establish appropriate safety and health practices and determine the applicability of regulatory limitations prior to use."
+            ], 
+            "_id" : "5ddd6d560aabefc8b093491f"
+        }
+    ], 
+    "method" : [
+        "cuantitative"
+    ], 
+    "techniques" : [
+        "Pycnometer",
+        "Method A"
+    ], 
+    "date" : "2019-10-22T16:09:40.163+0001", 
+    "institution" : [
+        {
+            "institution_id" : "5ddd6ecdd9460c79871e10e3"
+        }
+    ], 
+    "project" : [
+        {
+            "project_id" : "5ddd6ff348f9def0b69559eb"
+        }
+    ]
+},
+{ 
+    "_id" : "5d8ea115309a6e48711f9850", 
+    "title" : "Project A-1: Water determination for soil samples", 
+    "description" : "In this lab test we have determined moisture for specimens S-51, S-52, S-53 and S-10 from project A soil sample. This lab test conformed with ASTM D2216.5122: “Standard Test Methods for Laboratory Determination of Water (Moisture) Content of\r\nSoil and Rock by Mass”. This is a preliminary study of the soil from project A, location 1 soil, aditional studies are required for this project and law requirements.", 
+    "test_location" : "laboratory", 
+    "analyzed_properties" : [
+        "soil moisture", 
+        "soil water content"
+    ], 
+    "knowledge_domains" : [
+        "soils"
+    ], 
+    "materials" : [
+        {
+            "description" : "soil,rock,agreggate", 
+            "astm_prefix" : "D", 
+            "_id" : "5d99644380591a1cb40f32ff"
+        }
+    ], 
+    "keywords" : [
+        "soil", 
+        "ASTM", 
+        "ASTM D2216", 
+        "moisture", 
+        "Oven dried", 
+        "Project A"
+    ], 
+    "version" : 1, 
+    "output_description" : "Water content data sheet. Records for specimens from soil sample in project A-1", 
+    "purposes" : [
+        "Determination of water content from wet soil sample"
+    ], 
+    "authors" : [
+        {
+            "role" : "Researcher", 
+            "author_id" : "5d9935b980591a1cb40f323c"
+        }, 
+        {
+            "role" : "Lab tech", 
+            "author_id" : "5d9935e180591a1cb40f323e"
+        }
+    ], 
+    "document_section" : [
+        {
+            "type" : "References", 
+            "corpus" : [
+                "ASTM D2216.5122: Standard Test Methods for Laboratory Determination of Water (Moisture) Content of Soil and Rock by Mass", 
+                "ASTM D653 Terminology Relating to Soil, Rock, and Contained Fluids"
+            ], 
+            "_id" : "5d993e5580591a1cb40f3254"
+        }
+    ], 
+    "method" : [
+        "cuantitative"
+    ], 
+    "techniques" : [
+        "dried in oven"
+    ], 
+    "date" : "2019-10-06T01:49:06.862+0000", 
+    "institution" : [
+        {
+            "institution_id" : "5db102072911e056d40b28e1"
+        }
+    ], 
+    "project" : [
+        {
+            "project_id" : "5db102ea2911e056d40b28e3"
+        }
+    ]
+},
+{ 
+    "_id" : "5daf19324590d43e3b59476d", 
+    "title" : "Project-A-1: Determination of density (Unit Weight) of soil ", 
+    "description" : "In this lab test we have determined unitary weight of soil: wet and dry soil and dried", 
+    "test_location" : "laboratory", 
+    "analyzed_properties" : [
+        "weight wet soil", 
+        "weight dry soil"
+    ], 
+    "knowledge_domains" : [
+        "soils"
+    ], 
+    "materials" : [
+        {
+            "description" : "soil,rock, aggregate", 
+            "astm_prefix" : "D", 
+            "_id" : "5daf1bdc4590d43e3b594771"
+        }
+    ], 
+    "keywords" : [
+        "soil", 
+        "unitary weight", 
+        "ASTM D7263", 
+        "dry soil", 
+        "wet soil", 
+        "Project A"
+    ], 
+    "version" : 1, 
+    "output_description" : "Unitary weigth data sheet for wet and dry soil samples", 
+    "purposes" : [
+        "Determination of unit weight from wet and dry soil sample"
+    ], 
+    "authors" : [
+        {
+            "role" : "Researcher", 
+            "author_id" : "5d9935b980591a1cb40f323c"
+        }
+    ], 
+    "document_section" : [
+        {
+            "type" : "References", 
+            "corpus" : [
+                "ASTM D653 Terminology Relating to Soil, Rock, and Contained Fluids", 
+                "ASTM D7263−09 Standard Test Methods forLaboratory Determination of Density (Unit Weight) of SoilSpecimens", 
+                "Guía LMS-PCJIC-03: Determinación del peso unitario de suelos con voluemn conocido. Guía de laboratorio de mecánica suelos. Victoria Elena Meza Ochoa"
+            ], 
+            "_id" : "5daf25554590d43e3b5947b2"
+        }, 
+        {
+            "type" : "Scope", 
+            "corpus" : [
+                "These test methods describe two ways of determiningthe total/moist and dry densities (unit weights) of intact,disturbed, remolded, and reconstituted (compacted) soil speci-mens. Density (unit weight) as used in this standard means thesame as “bulk density” of soil as defined by the Soil ScienceSociety of America. Intact specimens may be obtained fromthin-walled sampling tubes, block samples, or clods. Speci-mens that are remolded by dynamic or static compactionprocedures may also be measured by these methods. Thesemethods apply to soils that will retain their shape during themeasurement process and may also apply to other materialssuch as soil-cement, soil-lime, soil-bentonite or solidifiedsoil-bentonite-cement slurries. It is common for the density(unit weight) of specimens after removal from sampling tubesand compaction molds to be less than the value based on tubeor mold volumes, or of in situ conditions. This is due to thespecimen swelling after removal of lateral pressures."
+            ], 
+            "_id" : "5daf26be4590d43e3b5947b5"
+        }
+    ], 
+    "method" : [
+        "cuantitative"
+    ], 
+    "techniques" : [
+        "known volume", 
+        "dryed in oven"
+    ], 
+    "date" : "2019-10-22T16:09:40.163+0000", 
+    "institution" : [
+        {
+            "institution_id" : "5db102072911e056d40b28e1"
+        }
+    ], 
+    "project" : [
+        {
+            "project_id" : "5db102ea2911e056d40b28e3"
+        }
+    ]
+}
+]

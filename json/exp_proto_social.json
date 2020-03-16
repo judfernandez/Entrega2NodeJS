@@ -1,0 +1,67 @@
+[{ 
+    "_id" : "5db10eef2911e056d40b2908", 
+    "type" : "authors", 
+    "elements" : [
+        {
+            "_id" : "5d9935b980591a1cb40f323c", 
+            "name" : "Juan Felipe Muñoz Fernández", 
+            "orcid" : "0000-0001-2345-6789", 
+            "email" : "jfmunozf@unal.edu.co", 
+            "id_institution" : "5db102072911e056d40b28e1"
+        }, 
+        {
+            "_id" : "5d9935e180591a1cb40f323e", 
+            "name" : "José-Libaniel Rodríguez Pérez", 
+            "orcid" : "0000-0021-2345-6789", 
+            "email" : "jlibanielr@unal.edu.co", 
+            "id_institution" : "5db102072911e056d40b28e1"
+        },
+        {
+            "_id" : "5ddd6f0b87e76ee194b646e8", 
+            "name" : "Andrés Salcedo", 
+            "orcid" : "0000-0021-2345-6790", 
+            "email" : "asalcedo@unal.edu.co", 
+            "id_institution" : "5ddd6ecdd9460c79871e10e3"
+        },
+        {
+            "_id" : "5ddd701071bbb09f2107672f", 
+            "name" : "Ramón Valdez", 
+            "orcid" : "0000-0021-2345-6791", 
+            "email" : "rvaldez@unal.edu.co", 
+            "id_institution" : "5ddd6ecdd9460c79871e10e3"
+        }
+    ]
+},
+{ 
+    "_id" : "5db10fbd2911e056d40b2909", 
+    "type" : "institutions", 
+    "elements" : [
+        {
+            "_id" : "5db102072911e056d40b28e1", 
+            "name" : "Universidad Nacional de Colombia, sede Medellín", 
+            "location_coords" : "0W,0N"
+        },
+        {
+            "_id" : "5ddd6ecdd9460c79871e10e3", 
+            "name" : "Laboratorio de I Suelos, Universidad Nacional de Colombia, sede Medellín", 
+            "location_coords" : "0W,0N"
+        }
+    ]
+},
+{ 
+    "_id" : "5db1102c2911e056d40b290a", 
+    "type" : "projects", 
+    "elements" : [
+        {
+            "_id" : "5db110662911e056d40b290c", 
+            "name" : "Project-A", 
+            "location_coords" : "0W,0N"
+        },
+        {
+            "_id" : "5ddd6ff348f9def0b69559eb", 
+            "name" : "Project-B", 
+            "location_coords" : "0W,0N"
+        }
+    ]
+}
+]
