@@ -10,10 +10,10 @@
   "author": "Juan David Fernandez Moreno",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "bootstrap": "^4.3.1",
     "client-sessions": "^0.8.0",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "hbs": "^4.0.3",
     "jquery": "^3.3.1",
     "mongoose": "^5.5.1",
